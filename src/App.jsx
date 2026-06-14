@@ -4,196 +4,353 @@ const clickSound = new Audio('/sounds/click.mp3');
 const successSound = new Audio('/sounds/success.mp3');
 const errorSound = new Audio('/sounds/error.mp3');
 
+const TEXT = {
+  ms: {
+    explore: "Jelajah",
+    inventory: "Inventori",
+    artifactFound: "Artifak Ditemui!",
+    catch: "Tangkap",
+    congratulations: "Tahniah!",
+    artifactOwned: "Tahniah, Artifak ini milik anda!",
+    wrongAnswer: "Oops! Jawapan tidak betul. Artifak itu telah melarikan diri!"
+  },
+
+  en: {
+    explore: "Explore",
+    inventory: "Inventory",
+    artifactFound: "Artifact Found!",
+    catch: "Capture",
+    congratulations: "Congratulations!",
+    artifactOwned: "Congratulations, this artifact is now yours!",
+    wrongAnswer: "Oops! Incorrect answer. The artifact has escaped!"
+  }
+};
+
 // --- 1. DATA: Points of Interest (1 Artifact per Location) ---
 const POIS = [
-  {
-    id: 'medan_bandar',
-    name: 'Medan Bandar',
-    lat: 6.1191,
-    lng: 100.3658,
-    image: '/Medan Bandar.jpg',
-    mainIcon: '🏛️',
-    color: 'bg-blue-500',
-    desc: 'Padang bersejarah yang dahulunya dikenali sebagai Padang Court.',
-    artifacts: [
-      {
-        id: 'mb_1',
-        name: 'Tugu Bandar',
-        icon: '🏛️',
-        question: 'Apakah nama asal Medan Bandar?',
-        options: ['Padang Court', 'Padang Sultan'],
-        answer: 'Padang Court'
-      }
-    ]
-  },
+{
+id: 'medan_bandar',
+name: 'Medan Bandar',
+lat: 6.1191,
+lng: 100.3658,
+image: '/Medan Bandar.jpg',
+mainIcon: '🏛️',
+color: 'bg-blue-500',
+desc: {
+ms: 'Padang bersejarah yang dahulunya dikenali sebagai Padang Court.',
+en: 'A historic field formerly known as Padang Court.'
+},
+artifacts: [
+{
+id: 'mb_1',
+name: {
+ms: 'Tugu Bandar',
+en: 'City Monument'
+},
+icon: '🏛️',
+question: {
+ms: 'Apakah nama asal Medan Bandar?',
+en: 'What was the original name of Medan Bandar?'
+},
+options: {
+ms: ['Padang Court', 'Padang Sultan'],
+en: ['Padang Court', 'Sultan Field']
+},
+answer: {
+ms: 'Padang Court',
+en: 'Padang Court'
+}
+}
+]
+},
 
-  {
-    id: 'balai_seni',
-    name: 'Balai Seni Negeri Kedah',
-    lat: 6.1187,
-    lng: 100.3655,
-    image: '/Balai Seni.jpg',
-    mainIcon: '🎨',
-    color: 'bg-pink-500',
-    desc: 'Bangunan Mahkamah Besar lama yang kini menjadi galeri seni.',
-    artifacts: [
-      {
-        id: 'bs_1',
-        name: 'Lukisan Warisan',
-        icon: '🎨',
-        question: 'Balai Seni pada asalnya dibina sebagai?',
-        options: ['Sekolah Melayu', 'Mahkamah Besar'],
-        answer: 'Mahkamah Besar'
-      }
-    ]
-  },
+{
+id: 'balai_seni',
+name: 'Balai Seni Negeri Kedah',
+lat: 6.1187,
+lng: 100.3655,
+image: '/Balai Seni.jpg',
+mainIcon: '🎨',
+color: 'bg-pink-500',
+desc: {
+ms: 'Bangunan Mahkamah Besar lama yang kini menjadi galeri seni.',
+en: 'A former High Court building that now serves as an art gallery.'
+},
+artifacts: [
+{
+id: 'bs_1',
+name: {
+ms: 'Lukisan Warisan',
+en: 'Heritage Painting'
+},
+icon: '🎨',
+question: {
+ms: 'Balai Seni pada asalnya dibina sebagai?',
+en: 'The State Art Gallery was originally built as a?'
+},
+options: {
+ms: ['Sekolah Melayu', 'Mahkamah Besar'],
+en: ['Malay School', 'High Court']
+},
+answer: {
+ms: 'Mahkamah Besar',
+en: 'High Court'
+}
+}
+]
+},
 
-  {
-    id: 'monumen_alor_setar',
-    name: 'Monumen Alor Setar',
-    lat: 6.1183,
-    lng: 100.3654,
-    image: '/Monumen Alor Setar.jpg',
-    mainIcon: '🏙️',
-    color: 'bg-cyan-500',
-    desc: 'Monumen memperingati ulang tahun ke-250 bandar Alor Setar.',
-    artifacts: [
-      {
-        id: 'ma_1',
-        name: 'Mini Monumen',
-        icon: '🏙️',
-        question: 'Monumen ini dibina untuk memperingati ulang tahun ke berapa Alor Setar?',
-        options: ['200', '250'],
-        answer: '250'
-      }
-    ]
-  },
+{
+id: 'monumen_alor_setar',
+name: 'Monumen Alor Setar',
+lat: 6.1183,
+lng: 100.3654,
+image: '/Monumen Alor Setar.jpg',
+mainIcon: '🏙️',
+color: 'bg-cyan-500',
+desc: {
+ms: 'Monumen memperingati ulang tahun ke-250 bandar Alor Setar.',
+en: 'A monument commemorating the 250th anniversary of Alor Setar.'
+},
+artifacts: [
+{
+id: 'ma_1',
+name: {
+ms: 'Mini Monumen',
+en: 'Mini Monument'
+},
+icon: '🏙️',
+question: {
+ms: 'Monumen ini dibina untuk memperingati ulang tahun ke berapa Alor Setar?',
+en: 'This monument was built to commemorate which anniversary of Alor Setar?'
+},
+options: {
+ms: ['200', '250'],
+en: ['200', '250']
+},
+answer: {
+ms: '250',
+en: '250'
+}
+}
+]
+},
 
-  {
-    id: 'muzium_diraja',
-    name: 'Muzium Diraja',
-    lat: 6.1195,
-    lng: 100.3667,
-    image: '/Muzium Diraja.jpg',
-    mainIcon: '👑',
-    color: 'bg-red-500',
-    desc: 'Istana kayu yang pernah menjadi kediaman keluarga diraja Kedah.',
-    artifacts: [
-      {
-        id: 'md_1',
-        name: 'Mahkota Diraja',
-        icon: '👑',
-        question: 'Apakah nama asal Muzium Diraja ini?',
-        options: ['Istana Anak Bukit', 'Istana Kota Setar'],
-        answer: 'Istana Kota Setar'
-      }
-    ]
-  },
+{
+id: 'muzium_diraja',
+name: 'Muzium Diraja',
+lat: 6.1195,
+lng: 100.3667,
+image: '/Muzium Diraja.jpg',
+mainIcon: '👑',
+color: 'bg-red-500',
+desc: {
+ms: 'Istana kayu yang pernah menjadi kediaman keluarga diraja Kedah.',
+en: 'A wooden palace that once served as the residence of the Kedah royal family.'
+},
+artifacts: [
+{
+id: 'md_1',
+name: {
+ms: 'Mahkota Diraja',
+en: 'Royal Crown'
+},
+icon: '👑',
+question: {
+ms: 'Apakah nama asal Muzium Diraja ini?',
+en: 'What was the original name of the Royal Museum?'
+},
+options: {
+ms: ['Istana Anak Bukit', 'Istana Kota Setar'],
+en: ['Anak Bukit Palace', 'Istana Kota Setar']
+},
+answer: {
+ms: 'Istana Kota Setar',
+en: 'Istana Kota Setar'
+}
+}
+]
+},
 
-  {
-    id: 'balai_besar',
-    name: 'Balai Besar',
-    lat: 6.1197,
-    lng: 100.3666,
-    image: '/Balai Besar.jpg',
-    mainIcon: '📜',
-    color: 'bg-purple-600',
-    desc: 'Bangunan rasmi negeri yang dipengaruhi seni bina Thailand.',
-    artifacts: [
-      {
-        id: 'bb_1',
-        name: 'Dokumen Diraja',
-        icon: '📜',
-        question: 'Apakah fungsi utama Balai Besar pada masa dahulu?',
-        options: ['Balai Polis', 'Balai Penghadapan'],
-        answer: 'Balai Penghadapan'
-      }
-    ]
-  },
+{
+id: 'balai_besar',
+name: 'Balai Besar',
+lat: 6.1197,
+lng: 100.3666,
+image: '/Balai Besar.jpg',
+mainIcon: '📜',
+color: 'bg-purple-600',
+desc: {
+ms: 'Bangunan rasmi negeri yang dipengaruhi seni bina Thailand.',
+en: 'An official state building influenced by Thai architecture.'
+},
+artifacts: [
+{
+id: 'bb_1',
+name: {
+ms: 'Dokumen Diraja',
+en: 'Royal Document'
+},
+icon: '📜',
+question: {
+ms: 'Apakah fungsi utama Balai Besar pada masa dahulu?',
+en: 'What was the main function of Balai Besar in the past?'
+},
+options: {
+ms: ['Balai Polis', 'Balai Penghadapan'],
+en: ['Police Station', 'Audience Hall']
+},
+answer: {
+ms: 'Balai Penghadapan',
+en: 'Audience Hall'
+}
+}
+]
+},
 
-  {
-    id: 'balai_nobat',
-    name: 'Balai Nobat',
-    lat: 6.1209,
-    lng: 100.3665,
-    image: '/Balai Nobat.jpg',
-    mainIcon: '🎺',
-    color: 'bg-green-500',
-    desc: 'Tempat penyimpanan alat muzik nobat diraja Kedah.',
-    artifacts: [
-      {
-        id: 'bn_1',
-        name: 'Serunai Diraja',
-        icon: '🎺',
-        question: 'Apakah yang disimpan di Balai Nobat?',
-        options: ['Alat Muzik Diraja', 'Senjata Diraja'],
-        answer: 'Alat Muzik Diraja'
-      }
-    ]
-  },
+{
+id: 'balai_nobat',
+name: 'Balai Nobat',
+lat: 6.1209,
+lng: 100.3665,
+image: '/Balai Nobat.jpg',
+mainIcon: '🎺',
+color: 'bg-green-500',
+desc: {
+ms: 'Tempat penyimpanan alat muzik nobat diraja Kedah.',
+en: 'The storage place for the royal Nobat musical instruments of Kedah.'
+},
+artifacts: [
+{
+id: 'bn_1',
+name: {
+ms: 'Serunai Diraja',
+en: 'Royal Serunai'
+},
+icon: '🎺',
+question: {
+ms: 'Apakah yang disimpan di Balai Nobat?',
+en: 'What is stored in Balai Nobat?'
+},
+options: {
+ms: ['Alat Muzik Diraja', 'Senjata Diraja'],
+en: ['Royal Musical Instruments', 'Royal Weapons']
+},
+answer: {
+ms: 'Alat Muzik Diraja',
+en: 'Royal Musical Instruments'
+}
+}
+]
+},
 
-  {
-    id: 'pintu_gerbang',
-    name: 'Pintu Gerbang Kota Tengah',
-    lat: 6.1207,
-    lng: 100.3664,
-    image: '/Pintu Gerbang Kota Tengah.jpg',
-    mainIcon: '🚪',
-    color: 'bg-indigo-500',
-    desc: 'Pintu gerbang bersejarah yang dibina semula selepas pembinaan Wisma Negeri.',
-    artifacts: [
-      {
-        id: 'pg_1',
-        name: 'Gerbang Kota',
-        icon: '🚪',
-        question: 'Pintu gerbang ini pada asalnya terletak di hadapan?',
-        options: ['Istana Kota Tengah', 'Balai Besar'],
-        answer: 'Istana Kota Tengah'
-      }
-    ]
-  },
+{
+id: 'pintu_gerbang',
+name: 'Pintu Gerbang Kota Tengah',
+lat: 6.1207,
+lng: 100.3664,
+image: '/Pintu Gerbang Kota Tengah.jpg',
+mainIcon: '🚪',
+color: 'bg-indigo-500',
+desc: {
+ms: 'Pintu gerbang bersejarah yang dibina semula selepas pembinaan Wisma Negeri.',
+en: 'A historic gateway rebuilt after the construction of Wisma Negeri.'
+},
+artifacts: [
+{
+id: 'pg_1',
+name: {
+ms: 'Gerbang Kota',
+en: 'City Gateway'
+},
+icon: '🚪',
+question: {
+ms: 'Pintu gerbang ini pada asalnya terletak di hadapan?',
+en: 'This gateway was originally located in front of?'
+},
+options: {
+ms: ['Istana Kota Tengah', 'Balai Besar'],
+en: ['Istana Kota Tengah', 'Balai Besar']
+},
+answer: {
+ms: 'Istana Kota Tengah',
+en: 'Istana Kota Tengah'
+}
+}
+]
+},
 
-  {
-    id: 'galeri_sultan',
-    name: 'Galeri Sultan Abdul Halim',
-    lat: 6.1213,
-    lng: 100.3665,
-    image: '/Galeri SAHMS.jpg',
-    mainIcon: '📸',
-    color: 'bg-amber-500',
-    desc: 'Galeri yang mempamerkan koleksi peribadi Sultan Abdul Halim.',
-    artifacts: [
-      {
-        id: 'gs_1',
-        name: 'Koleksi Diraja',
-        icon: '📸',
-        question: 'Bangunan ini pada asalnya digunakan sebagai?',
-        options: ['Mahkamah Negeri', 'Mahkamah Tinggi'],
-        answer: 'Mahkamah Tinggi'
-      }
-    ]
-  },
+{
+id: 'galeri_sultan',
+name: 'Galeri Sultan Abdul Halim',
+lat: 6.1213,
+lng: 100.3665,
+image: '/Galeri SAHMS.jpg',
+mainIcon: '📸',
+color: 'bg-amber-500',
+desc: {
+ms: 'Galeri yang mempamerkan koleksi peribadi Sultan Abdul Halim.',
+en: 'A gallery showcasing the personal collection of Sultan Abdul Halim.'
+},
+artifacts: [
+{
+id: 'gs_1',
+name: {
+ms: 'Koleksi Diraja',
+en: 'Royal Collection'
+},
+icon: '📸',
+question: {
+ms: 'Bangunan ini pada asalnya digunakan sebagai?',
+en: 'This building was originally used as a?'
+},
+options: {
+ms: ['Mahkamah Negeri', 'Mahkamah Tinggi'],
+en: ['State Court', 'High Court']
+},
+answer: {
+ms: 'Mahkamah Tinggi',
+en: 'High Court'
+}
+}
+]
+},
 
-  {
-    id: 'menara_jam',
-    name: 'Menara Jam',
-    lat: 6.1209,
-    lng: 100.3659,
-    image: '/Menara Jam.jpg',
-    mainIcon: '🕰️',
-    color: 'bg-rose-500',
-    desc: 'Menara jam bersejarah yang dibina pada tahun 1912.',
-    artifacts: [
-      {
-        id: 'mj_1',
-        name: 'Jam Antik',
-        icon: '🕰️',
-        question: 'Pada zaman dahulu, Menara Jam berbunyi ketika?',
-        options: ['Waktu Solat', 'Waktu Pasar Dibuka'],
-        answer: 'Waktu Solat'
-      }
-    ]
-  }
+{
+id: 'menara_jam',
+name: 'Menara Jam',
+lat: 6.1209,
+lng: 100.3659,
+image: '/Menara Jam.jpg',
+mainIcon: '🕰️',
+color: 'bg-rose-500',
+desc: {
+ms: 'Menara jam bersejarah yang dibina pada tahun 1912.',
+en: 'A historic clock tower built in 1912.'
+},
+artifacts: [
+{
+id: 'mj_1',
+name: {
+ms: 'Jam Antik',
+en: 'Antique Clock'
+},
+icon: '🕰️',
+question: {
+ms: 'Pada zaman dahulu, Menara Jam berbunyi ketika?',
+en: 'In the past, the Clock Tower rang during?'
+},
+options: {
+ms: ['Waktu Solat', 'Waktu Pasar Dibuka'],
+en: ['Prayer Time', 'Market Opening Time']
+},
+answer: {
+ms: 'Waktu Solat',
+en: 'Prayer Time'
+}
+}
+]
+}
 ];
 
 // --- 2. UTILITY (Calculate Distance) ---
@@ -216,7 +373,7 @@ const getUncaughtArtifacts = (poi, inventory) => {
 };
 
 // --- 3. MAP SCREEN ---
-const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, setIsRealGPS, showNotification }) => {
+const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, setIsRealGPS, showNotification, language, setShowLanguageSelect }) => {
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const playerMarkerRef = useRef(null);
@@ -314,7 +471,7 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
           .bindPopup(`
             <div class="text-center p-1">
               <h3 class="font-bold text-gray-800">${poi.name}</h3>
-              <p class="text-xs text-gray-500 mb-2">${poi.desc}</p>
+              <p class="text-xs text-gray-500 mb-2">${poi.desc[language]}</p>
               <span class="text-[10px] px-2 py-1 bg-gray-100 rounded-full">${isCollected ? '✅ Ditemui' : `📍 Artifak Belum Ditemui`}</span>
             </div>
           `);
@@ -461,21 +618,27 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
         <div className="flex flex-col gap-2 pointer-events-auto">
           <div className="bg-white/90 p-3 rounded-2xl shadow-xl backdrop-blur-md border border-white/50">
             <h1 className="font-extrabold text-gray-800 text-lg leading-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-700 to-amber-500">
-              Jejak Diraja
+              {language === 'en' ? 'Royal Trail' : 'Jejak Diraja'}
             </h1>
             <p className="text-xs text-gray-500 font-medium flex items-center gap-1 mt-1">
               <MapPin size={12} /> Alor Setar, Kedah
             </p>
+            <button
+             onClick={() => setShowLanguageSelect(true)}
+             className="pointer-events-auto bg-white/90 px-3 py-2 rounded-full shadow-lg text-xs font-bold text-gray-700 hover:scale-105 transition">
+            🌐 {language === 'en' ? 'EN' : 'BM'}
+            </button>
           </div>
 
           {nextMission && (
             <div onClick={focusNextMission} className="bg-white/95 p-2.5 rounded-xl shadow-lg backdrop-blur-md border-l-4 border-amber-600 cursor-pointer hover:bg-amber-100 transition-colors pointer-events-auto">
-              <p className="text-[10px] font-bold text-amber-600 uppercase tracking-wider mb-0.5">📍 Misi Seterusnya:</p>
+              <p className="text-[10px] font-bold text-amber-600 uppercase tracking-wider mb-0.5">📍 {language === 'en' ? 'Next Mission:' : 'Misi Seterusnya:'}</p>
               <div className="flex items-center gap-2">
                 <span className="text-lg">{nextMission.mainIcon}</span>
                 <div className="flex flex-col">
                   <span className="font-bold text-gray-800 text-xs">{nextMission.name}</span>
-                  <span className="text-[10px] text-gray-500">{Math.round(nextMission.distance)}m lagi</span>
+                  <span className="text-[10px] text-gray-500">{Math.round(nextMission.distance)}
+                  {language === 'en' ? 'm away' : 'm lagi'}</span>
                 </div>
               </div>
             </div>
@@ -496,8 +659,8 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
         {!isRealGPS && (
            <div className="bg-amber-100/95 border border-amber-300 text-amber-800 px-4 py-3 rounded-xl text-xs flex items-center gap-3 mb-4 shadow-lg backdrop-blur-sm mx-auto max-w-sm">
              <AlertCircle size={18} className="text-amber-600 flex-shrink-0 animate-pulse" />
-             <div className="flex-grow">Mod Simulasi. Klik peta untuk bergerak.</div>
-             <button onClick={teleportToAlorSetar} className="bg-amber-200 px-3 py-1.5 rounded-lg font-bold whitespace-nowrap hover:bg-amber-300 text-amber-900 transition">Ke Bandar</button>
+             <div className="flex-grow"> {language === 'en'? 'Simulation Mode. Tap the map to move.': 'Mod Simulasi. Klik peta untuk bergerak.'}</div>
+             <button onClick={teleportToAlorSetar} className="bg-amber-200 px-3 py-1.5 rounded-lg font-bold whitespace-nowrap hover:bg-amber-300 text-amber-900 transition">{language === 'en' ? 'Go to Town' : 'Ke Bandar'}</button>
            </div>
         )}
 
@@ -507,7 +670,7 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
               <span className="text-4xl drop-shadow-md">{getUncaughtArtifacts(nearbyPOI, inventory)[0].icon}</span>
               <div>
                 <p className="font-bold text-lg leading-tight">{nearbyPOI.name}</p>
-                <p className="text-xs text-amber-100 font-medium tracking-wide">Artifak Ditemui!</p>
+                <p className="text-xs text-amber-100 font-medium tracking-wide">{language === 'en'? 'Artifact Found!': 'Artifak Ditemui!'}</p>
               </div>
             </div>
             <button
@@ -519,7 +682,7 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
   className="bg-white text-amber-600 px-5 py-2.5 rounded-full font-bold shadow-lg flex items-center gap-2 hover:scale-105 active:scale-95 transition-all whitespace-nowrap"
 >
   <Camera size={18} />
-  Tangkap
+  {language === 'en' ? 'Capture' : 'Tangkap'}
 </button>
           </div>
         )}
@@ -529,24 +692,35 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
 };
 
 // --- 4. AR SCREEN ---
-const ARScreen = ({ poi, artifact, onCatch, onCancel }) => {
+const ARScreen = ({ poi, artifact, onCatch, onCancel, language }) => {
   const videoRef = useRef(null);
   const [stream, setStream] = useState(null);
   const [hasCameraError, setHasCameraError] = useState(false);
   const [artifactPos, setArtifactPos] = useState({ x: 50, y: 50 });
   const [captured, setCaptured] = useState(false);
+  const [showArtifact, setShowArtifact] = useState(false);
 
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
       .then(s => { setStream(s); if (videoRef.current) videoRef.current.srcObject = s; })
       .catch(err => setHasCameraError(true));
+      const artifactTimer = setTimeout(() => {
+      setShowArtifact(true);
+      }, 5000);
 
     const interval = setInterval(() => {
       if (!captured) setArtifactPos({ x: Math.random() * 70 + 15, y: Math.random() * 60 + 20 });
     }, 1500);
 
-    return () => { clearInterval(interval); if (stream) stream.getTracks().forEach(track => track.stop()); };
-  }, [captured]);
+    return () => {
+  clearInterval(interval);
+  clearTimeout(artifactTimer);
+
+  if (stream) {
+    stream.getTracks().forEach(track => track.stop());
+  }
+};
+}, [captured]);
 
   const handleCapture = () => {
   clickSound.currentTime = 0;
@@ -576,46 +750,65 @@ const ARScreen = ({ poi, artifact, onCatch, onCancel }) => {
         <button onClick={onCancel} className="bg-white/20 p-3 rounded-full backdrop-blur-md text-white hover:bg-white/30 transition shadow-lg"><X size={24} /></button>
         <div className="bg-black/60 px-5 py-2.5 rounded-full backdrop-blur-md text-white font-bold text-sm border border-white/20 shadow-lg flex items-center gap-2">
           <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-          Tangkap {artifact.name}!
+          {language === 'en' ? 'Capture' : 'Tangkap'} {artifact.name[language]}!
         </div>
       </div>
 
       {!captured ? (
-        <div className="absolute z-10 transition-all duration-[1200ms] ease-out cursor-pointer hover:scale-110 active:scale-95" style={{ left: `${artifactPos.x}%`, top: `${artifactPos.y}%`, transform: 'translate(-50%, -50%)' }} onClick={handleCapture}>
-          <div className="relative flex flex-col items-center group">
-            <div className="absolute -inset-6 border-2 border-dashed border-white/70 rounded-full animate-[spin_4s_linear_infinite] opacity-50 group-hover:border-green-400 group-hover:scale-110 group-hover:opacity-100 transition-all"></div>
-            <div className="absolute -inset-3 bg-white/10 rounded-full animate-ping group-hover:bg-green-400/20"></div>
-            <span className="text-7xl md:text-8xl drop-shadow-[0_0_25px_rgba(255,255,255,0.9)] z-10 transition-transform">{artifact.icon}</span>
-            <div className="mt-6 bg-black/80 text-white text-[10px] font-bold px-4 py-2 rounded-full whitespace-nowrap border border-white/30 animate-bounce tracking-widest uppercase">Tap di sini</div>
-          </div>
-        </div>
-      ) : (
-        <div className="absolute inset-0 flex items-center justify-center z-30 bg-white/20 backdrop-blur-sm transition-all duration-300">
-          <div className="animate-[scaleIn_0.6s_cubic-bezier(0.175,0.885,0.32,1.275)_forwards] text-center flex flex-col items-center">
-            <div className="relative">
-               <div className="absolute inset-0 bg-amber-500 blur-3xl opacity-50 rounded-full"></div>
-               <span className="text-9xl relative z-10">{artifact.icon}</span>
-            </div>
-            <h2 className="text-white text-4xl font-black mt-6 drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)] tracking-wide">BERJAYA!</h2>
-          </div>
-        </div>
-      )}
+        <>
+    {showArtifact && (
+      <div
+        className="absolute z-10 transition-all duration-[1200ms] ease-out cursor-pointer hover:scale-110 active:scale-95"
+        style={{
+          left: `${artifactPos.x}%`,
+          top: `${artifactPos.y}%`,
+          transform: 'translate(-50%, -50%)'
+        }}
+        onClick={handleCapture}
+      >
+        <div className="relative flex flex-col items-center group">
+          <div className="absolute -inset-6 border-2 border-dashed border-white/70 rounded-full animate-[spin_4s_linear_infinite] opacity-50 group-hover:border-green-400 group-hover:scale-110 group-hover:opacity-100 transition-all"></div>
 
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-30 z-0 mix-blend-overlay"><Crosshair size={100} className="text-white" strokeWidth={0.5} /></div>
-      <style>{`@keyframes scaleIn { 0% { transform: scale(0); opacity: 0; } 60% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }`}</style>
+          <div className="absolute -inset-3 bg-white/10 rounded-full animate-ping group-hover:bg-green-400/20"></div>
+
+          <span className="text-7xl md:text-8xl drop-shadow-[0_0_25px_rgba(255,255,255,0.9)] z-10 transition-transform">
+            {artifact.icon}
+          </span>
+
+          <div className="mt-6 bg-black/80 text-white text-[10px] font-bold px-4 py-2 rounded-full whitespace-nowrap border border-white/30 animate-bounce tracking-widest uppercase">
+            {language === 'en' ? 'Tap Here' : 'Klik Di Sini'}
+          </div>
+        </div>
+      </div>
+    )}
+  </>
+) : (
+  <div className="absolute inset-0 flex items-center justify-center z-30 bg-white/20 backdrop-blur-sm transition-all duration-300">
+    <div className="animate-[scaleIn_0.6s_cubic-bezier(0.175,0.885,0.32,1.275)_forwards] text-center flex flex-col items-center">
+      <div className="relative">
+        <div className="absolute inset-0 bg-amber-500 blur-3xl opacity-50 rounded-full"></div>
+        <span className="text-9xl relative z-10">{artifact.icon}</span>
+      </div>
+
+      <h2 className="text-white text-4xl font-black mt-6 drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)] tracking-wide">
+        {language === 'en' ? 'SUCCESS!' : 'BERJAYA!'}
+      </h2>
     </div>
+  </div>
+ )}
+ </div>
   );
 };
 
 // --- 5. TRIVIA SCREEN ---
-const TriviaScreen = ({ artifact, onSuccess, onFail }) => {
+const TriviaScreen = ({ artifact, onSuccess, onFail, language }) => {
   const [selected, setSelected] = useState(null);
 
   const handleAnswer = (opt) => {
   setSelected(opt);
 
   setTimeout(() => {
-    if (opt === artifact.answer) {
+    if (opt === artifact.answer[language]) {
       onSuccess(artifact.id);} 
     else {
        onFail();
@@ -634,25 +827,25 @@ const TriviaScreen = ({ artifact, onSuccess, onFail }) => {
             {artifact.icon}
           </div>
           <div className="absolute -bottom-3 -right-3 bg-yellow-400 text-yellow-900 text-xs font-black px-3 py-1.5 rounded-xl border-2 border-white shadow-lg transform rotate-12 z-20 uppercase tracking-wider">
-            Tahniah!
+            {language === 'en'? 'Congratulations!': 'Tahniah!'}
           </div>
         </div>
 
-        <h2 className="text-2xl font-black text-gray-800 text-center mb-2">Artifak Ditemui!</h2>
+        <h2 className="text-2xl font-black text-gray-800 text-center mb-2">{language === 'en'? 'Artifacts Collected': 'Artifak Ditemui'}</h2>
         <p className="text-sm text-amber-800 text-center mb-8 bg-white/60 px-5 py-2.5 rounded-2xl backdrop-blur-sm inline-block font-medium shadow-sm">
-          Jawab dengan betul untuk mendapatkan <br/><span className="font-bold text-amber-900">{artifact.name}</span>.
+          {language === 'en'? 'Answer correctly to collect': 'Jawab dengan betul untuk mendapatkan'} <br/><span className="font-bold text-amber-900">{artifact.name[language]}</span>.
         </p>
 
         <div className="bg-white/90 p-7 rounded-[2rem] shadow-[0_15px_40px_rgb(0,0,0,0.08)] w-full backdrop-blur-md border border-white">
-          <p className="font-bold text-lg text-gray-800 mb-8 text-center leading-snug">{artifact.question}</p>
+          <p className="font-bold text-lg text-gray-800 mb-8 text-center leading-snug">{artifact.question[language]}</p>
           
           <div className="space-y-4">
-            {artifact.options.map((opt, i) => {
+            {artifact.options[language].map((opt, i) => {
               let btnClass = "bg-gray-50 border-2 border-gray-100 text-gray-700 hover:border-amber-400 hover:bg-amber-50";
               let icon = null;
 
               if (selected) {
-                if (opt === artifact.answer) {
+                if (opt === artifact.answer[language]) {
                   btnClass = "bg-amber-500 text-white border-amber-600 shadow-[0_10px_20px_rgba(146,64,14,0.3)] scale-[1.02] transform transition-all";
                   icon = <CheckCircle size={22} className="text-white" />;
                 } else if (opt === selected) {
@@ -678,7 +871,7 @@ const TriviaScreen = ({ artifact, onSuccess, onFail }) => {
 };
 
 // --- 6. INVENTORY & REWARD SCREEN ---
-const InventoryScreen = ({ inventory }) => {
+const InventoryScreen = ({ inventory, language }) => {
   const totalArtifacts = POIS.reduce((sum, poi) => sum + poi.artifacts.length, 0);
   const progress = Math.round((inventory.length / totalArtifacts) * 100);
 
@@ -687,11 +880,11 @@ const InventoryScreen = ({ inventory }) => {
       <div className="bg-gradient-to-br from-amber-700 to-amber-600 pt-14 pb-10 px-8 text-white shadow-xl rounded-b-[2.5rem] relative overflow-hidden flex-shrink-0">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full transform translate-x-1/3 -translate-y-1/3"></div>
         <div className="relative z-10">
-          <h2 className="text-3xl font-black mb-1 tracking-tight">Inventori</h2>
-          <p className="text-amber-100 text-sm font-medium">Jelajah Alor Setar </p>
+          <h2 className="text-3xl font-black mb-1 tracking-tight">{language === 'en' ? 'Inventory' : 'Inventori'}</h2>
+          <p className="text-amber-100 text-sm font-medium"> {language === 'en'? 'Explore Alor Setar': 'Jelajah Alor Setar'} </p>
           <div className="mt-6">
             <div className="flex justify-between text-sm font-bold mb-3">
-              <span className="uppercase tracking-wider text-[10px] text-amber-100">Artifak Ditemui</span>
+              <span className="uppercase tracking-wider text-[10px] text-amber-100">{language === 'en'? 'Artifact Found!': 'Artifak Ditemui!'}</span>
               <span className="bg-black/20 px-3 py-1 rounded-full text-xs">{inventory.length} / {totalArtifacts}</span>
             </div>
             <div className="w-full bg-black/20 rounded-full h-2.5 backdrop-blur-sm border border-white/10 overflow-hidden">
@@ -709,13 +902,13 @@ const InventoryScreen = ({ inventory }) => {
             <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
                <Gift size={32} className="text-white animate-bounce" />
             </div>
-            <h3 className="font-black text-2xl mb-1">Ganjaran Anda!</h3>
-            <p className="text-xs font-medium text-orange-50 mb-5">Anda telah berjaya menemui semua artifak.</p>
+            <h3 className="font-black text-2xl mb-1">{language === 'en'? 'Your Reward!': 'Ganjaran Anda!'}</h3>
+            <p className="text-xs font-medium text-orange-50 mb-5">{language === 'en'? 'You have successfully found all artifacts.': 'Anda telah berjaya menemui semua artifak.'}</p>
             
             <div className="bg-white text-gray-800 p-5 rounded-2xl border-dashed border-2 border-orange-200">
-               <p className="font-bold text-sm mb-1 text-orange-600">HADIAH MENARIK MENANTI ANDA</p>
-               <p className="text-xs text-gray-500 mb-3">Tunjukkan voucher ini di:</p>
-               <p className="font-black text-md text-amber-700 leading-tight">Pejabat Pusat Pelancongan<br/>Alor Setar</p>
+               <p className="font-bold text-sm mb-1 text-orange-600">{language === 'en'? 'EXCITING REWARD AWAITS YOU': 'HADIAH MENARIK MENANTI ANDA'}</p>
+               <p className="text-xs text-gray-500 mb-3">{language === 'en'? 'Show this voucher at:': 'Tunjukkan voucher ini di:'}</p>
+               <p className="font-black text-md text-amber-700 leading-tight">{language === 'en'? 'Tourist Information Office<br/>Alor Setar': 'Pejabat Pusat Pelancongan<br/>Alor Setar'}</p>
                <div className="mt-4 py-3 bg-gray-50 rounded-xl border border-gray-200">
                  <p className="font-mono font-black text-2xl tracking-widest text-gray-800">SL-M27S</p>
                </div>
@@ -735,7 +928,7 @@ const InventoryScreen = ({ inventory }) => {
                 </div>
                 <div>
                    <h3 className="font-bold text-gray-800 text-sm leading-tight">{poi.name}</h3>
-                   <p className="text-[10px] text-gray-400 mt-0.5">{isPoiComplete ? 'Artifak Berjaya Ditangkap' : 'Artifak Tidak Ditemui'}</p>
+                   <p className="text-[10px] text-gray-400 mt-0.5">{language === 'en' ? (isPoiComplete ? 'Artifacts Caught' : 'Artifacts Not Found') : (isPoiComplete ? 'Artifak Berjaya Ditangkap' : 'Artifak Tidak Ditemui')}</p>
                 </div>
               </div>
               <div className="flex items-center">
@@ -759,6 +952,10 @@ export default function App() {
   const [toastMsg, setToastMsg] = useState({ text: null, type: 'info' });
   const [showSplash, setShowSplash] = useState(true);
   const [fadeSplash, setFadeSplash] = useState(false);
+  const [showLanguageSelect, setShowLanguageSelect] = useState(false);
+  const [language, setLanguage] = useState('ms');
+  const t = TEXT[language];
+  const [languageChosen, setLanguageChosen] = useState(false);
   const [playerLoc, setPlayerLoc] = useState({ lat: 6.1194, lng: 100.3660, accuracy: 50 }); // Starting at Alor Setar
 
   const playClick = () => {
@@ -777,13 +974,19 @@ const playError = () => {
 };
 
   useEffect(() => {
-    const timer1 = setTimeout(() => {
-      setFadeSplash(true); 
-      const timer2 = setTimeout(() => setShowSplash(false), 500); 
-      return () => clearTimeout(timer2);
-    }, 3500); 
-    return () => clearTimeout(timer1);
-  }, []);
+  const timer1 = setTimeout(() => {
+    setShowLanguageSelect(true);
+    setFadeSplash(true);
+
+    const timer2 = setTimeout(() => {
+      setShowSplash(false);
+    }, 500);
+
+    return () => clearTimeout(timer2);
+  }, 3500);
+
+  return () => clearTimeout(timer1);
+}, []);
 
   const showNotification = (msg, type = 'info') => {
     setToastMsg({ text: msg, type });
@@ -801,13 +1004,13 @@ const playError = () => {
     if (!inventory.includes(artifactId)) setInventory([...inventory, artifactId]);
     playSuccess();
     setView('map');
-    showNotification("Tahniah, Artifact ini milik anda!.", "berjaya");
+    showNotification(t.artifactOwned, "berjaya");
   };
 
   const handleTriviaFail = () => {
     playError();
     setView('map');
-    setTimeout(() => showNotification("Oops! Jawapan tidak betul. Artifact itu telah melarikan diri!", "error"), 300);
+    setTimeout(() => showNotification(t.wrongAnswer, "error"), 300);
   };
 
   return (
@@ -862,31 +1065,77 @@ const playError = () => {
 </div>
 
 <div className="absolute bottom-16 w-full flex justify-center z-10 px-4">
-  <p className="text-[#F5E6CC] text-sm font-medium tracking-wide">
-    Terokai Warisan Kedah Melalui AR
-  </p>
+  <p className="text-[#F5E6CC] text-sm font-medium tracking-wide text-center">
+  Explore Kedah Royal Heritage Through AR
+  <span className="block text-xs opacity-80 mt-1">
+    Terokai Warisan Diraja Kedah Melalui AR
+  </span>
+</p>
 </div>
 ```
 
   </div>
 )}
 
+{showLanguageSelect && (
+  <div className="absolute inset-0 z-[9999] bg-gradient-to-br from-[#5C4033] to-[#8B5E3C] flex flex-col items-center justify-center text-white">
 
+    <h2 className="text-3xl font-black mb-2">
+      Choose Language
+    </h2>
+
+    <p className="text-amber-100 mb-8">
+      Pilih Bahasa
+    </p>
+
+    <div className="flex flex-col gap-4 w-[80%] max-w-[280px]">
+
+      <button
+        onClick={() => {
+         setLanguage('en');
+          setLanguageChosen(true);
+          setShowLanguageSelect(false);
+         }}
+        className="bg-white text-[#5C4033] py-4 rounded-2xl font-bold text-lg shadow-xl hover:scale-105 transition"
+      >
+        English
+      </button>
+
+      <button
+        onClick={() => {
+        setLanguage('ms');
+        setLanguageChosen(true);
+        setShowLanguageSelect(false);
+      }}
+        className="bg-white text-[#5C4033] py-4 rounded-2xl font-bold text-lg shadow-xl hover:scale-105 transition"
+      >
+        Bahasa Melayu
+      </button>
+
+    </div>
+
+  </div>
+)}
+
+        {languageChosen && (
         <div className="flex-grow relative h-full w-full">
-          {view === 'map' && <MapScreen playerLoc={playerLoc} setPlayerLoc={setPlayerLoc} onEnterAR={handleEnterAR} inventory={inventory} isRealGPS={isRealGPS} setIsRealGPS={setIsRealGPS} showNotification={showNotification} />}
-          {view === 'ar' && activeMission.artifact && <ARScreen poi={activeMission.poi} artifact={activeMission.artifact} onCatch={handleCatch} onCancel={() => setView('map')} />}
-          {view === 'trivia' && activeMission.artifact && <TriviaScreen artifact={activeMission.artifact} onSuccess={handleTriviaSuccess} onFail={handleTriviaFail} />}
-          {view === 'inventory' && <InventoryScreen inventory={inventory} />}
+          {view === 'map' && <MapScreen playerLoc={playerLoc} setPlayerLoc={setPlayerLoc} onEnterAR={handleEnterAR} inventory={inventory} isRealGPS={isRealGPS} setIsRealGPS={setIsRealGPS} showNotification={showNotification} language={language} setShowLanguageSelect={setShowLanguageSelect}/>}
+          {view === 'ar' && activeMission.artifact && <ARScreen poi={activeMission.poi} artifact={activeMission.artifact} onCatch={handleCatch} onCancel={() => setView('map')} language={language}/>}
+          {view === 'trivia' && activeMission.artifact && <TriviaScreen artifact={activeMission.artifact} onSuccess={handleTriviaSuccess} onFail={handleTriviaFail} language={language} />}
+          {view === 'inventory' && <InventoryScreen inventory={inventory} language={language}/>}
         </div>
+        )}
 
-        {(view === 'map' || view === 'inventory') && (
+          {languageChosen && (view === 'map' || view === 'inventory') && (
           <div className="absolute bottom-0 w-full h-[110px] bg-white/95 backdrop-blur-xl border-t border-gray-100 flex justify-around items-center px-8 z-[500] rounded-b-[2.5rem] pb-2">
             <button onClick={() => {
              playClick();
              setView('map');
              }} className={`flex flex-col items-center justify-center p-2 w-20 transition-all duration-300 ${view === 'map' ? 'text-amber-600 -translate-y-2' : 'text-gray-400 hover:text-gray-600'}`}>
               <div className={`p-2 rounded-2xl ${view === 'map' ? 'bg-amber-50' : ''}`}><MapPin size={26} strokeWidth={view === 'map' ? 2.5 : 2} /></div>
-              <span className={`text-[10px] mt-1 ${view === 'map' ? 'font-black' : 'font-medium'}`}>Jelajah</span>
+              <span className={`text-[10px] mt-1 ${view === 'map' ? 'font-black' : 'font-medium'}`}>
+              {t.explore}
+              </span>
             </button>
             <div className="w-14 h-14 bg-gradient-to-tr from-amber-500 to-amber-400 rounded-full flex items-center justify-center shadow-lg border-4 border-white transform hover:scale-105 transition-transform cursor-pointer">
                <Camera size={24} className="text-white" />
@@ -896,7 +1145,9 @@ const playError = () => {
              setView('inventory');
              }} className={`flex flex-col items-center justify-center p-2 w-20 transition-all duration-300 relative ${view === 'inventory' ? 'text-amber-600 -translate-y-2' : 'text-gray-400 hover:text-gray-600'}`}>
               <div className={`p-2 rounded-2xl ${view === 'inventory' ? 'bg-amber-50' : ''}`}><Backpack size={26} strokeWidth={view === 'inventory' ? 2.5 : 2} /></div>
-              <span className={`text-[10px] mt-1 ${view === 'inventory' ? 'font-black' : 'font-medium'}`}>Inventori</span>
+              <span className={`text-[10px] mt-1 ${view === 'inventory' ? 'font-black' : 'font-medium'}`}>
+              {t.inventory}
+              </span>
               {inventory.length > 0 && (
                 <span className="absolute top-1 right-2 bg-red-500 text-white text-[9px] font-black w-[18px] h-[18px] rounded-full flex items-center justify-center border-2 border-white shadow-sm z-10">{inventory.length}</span>
               )}
