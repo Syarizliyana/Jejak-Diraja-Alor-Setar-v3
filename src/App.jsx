@@ -4,6 +4,72 @@ const clickSound = new Audio('/sounds/click.mp3');
 const successSound = new Audio('/sounds/success.mp3');
 const errorSound = new Audio('/sounds/error.mp3');
 
+const HOW_TO_PLAY = {
+  en: [
+    {
+      image: "/screen1.png",
+      title: "Explore the Map",
+      description:
+        "Walk around Alor Setar and follow the map to discover nearby heritage sites."
+    },
+    {
+      image: "/screen2.jpg",
+      title: "Capture the Artifact",
+      description:
+        "When you arrive at a heritage site, tap the Capture button to collect the virtual artifact."
+    },
+    {
+      image: "/screen3.png",
+      title: "Learn the Heritage",
+      description:
+        "Read the heritage information carefully before continuing to the quiz."
+    },
+    {
+      image: "/screen4.png",
+      title: "Answer the Quiz",
+      description:
+        "Answer correctly to collect artifacts and complete your heritage journey."
+    },
+    {
+    type: "controls",
+    title: "Navigation & Controls",
+    description: ""
+    }  
+  ],
+
+  ms: [
+    {
+      image: "/screen1.png",
+      title: "Jelajah Peta",
+      description:
+        "Berjalan di sekitar Alor Setar dan ikuti peta untuk menemui lokasi warisan berhampiran."
+    },
+    {
+      image: "/screen2.png",
+      title: "Tangkap Artifak",
+      description:
+        "Apabila tiba di lokasi warisan, tekan butang Tangkap untuk mendapatkan artifak maya."
+    },
+    {
+      image: "/screen3.png",
+      title: "Pelajari Warisan",
+      description:
+        "Baca maklumat mengenai bangunan warisan sebelum meneruskan ke kuiz."
+    },
+    {
+      image: "/screen4.png",
+      title: "Jawab Kuiz",
+      description:
+        "Jawab dengan betul untuk mengumpul artifak dan melengkapkan pengembaraan warisan anda."
+    },
+    {
+    type: "controls",
+    title: "Navigasi & Kawalan",
+    description: ""
+    }
+  ]
+};
+
 const TEXT = {
   ms: {
     explore: "Jelajah",
@@ -33,12 +99,12 @@ id: 'medan_bandar',
 name: 'Medan Bandar',
 lat: 6.1191,
 lng: 100.3658,
-image: '/Medan Bandar.jpg',
+image: '/Medan Bandar 3D.png',
 mainIcon: '🏛️',
 color: 'bg-blue-500',
 desc: {
-ms: 'Padang bersejarah yang dahulunya dikenali sebagai Padang Court.',
-en: 'A historic field formerly known as Padang Court.'
+ms: 'Medan Bandar asalnya dikenali sebagai “Padang Court” disebabkan oleh kedudukannya yang terletak berhampiran dengan bangunan mahkamah lama.',
+en: 'Medan Bandar was originally known as “Padang Court” because it was located near the old courthouse building.'
 },
 artifacts: [
 {
@@ -69,12 +135,12 @@ id: 'balai_seni',
 name: 'Balai Seni Negeri Kedah',
 lat: 6.1187,
 lng: 100.3655,
-image: '/Balai Seni.jpg',
+image: '/Balai Seni 3D.png',
 mainIcon: '🎨',
 color: 'bg-pink-500',
 desc: {
-ms: 'Bangunan Mahkamah Besar lama yang kini menjadi galeri seni.',
-en: 'A former High Court building that now serves as an art gallery.'
+ms: 'Balai Seni pada asalnya dibina khusus untuk Mahkamah Besar pada tahun 1912. Kini, Balai Seni Negeri ini menempatkan hasil karya dan koleksi seni yang terdapat di Negeri Kedah.',
+en: 'The Art Gallery was originally built specifically for the High Court in 1912. Today, the Kedah State Art Gallery houses artworks and art collections found in the state of Kedah.'
 },
 artifacts: [
 {
@@ -105,12 +171,12 @@ id: 'monumen_alor_setar',
 name: 'Monumen Alor Setar',
 lat: 6.1183,
 lng: 100.3654,
-image: '/Monumen Alor Setar.jpg',
+image: '/Monumen 3D.png',
 mainIcon: '🏙️',
 color: 'bg-cyan-500',
 desc: {
-ms: 'Monumen memperingati ulang tahun ke-250 bandar Alor Setar.',
-en: 'A monument commemorating the 250th anniversary of Alor Setar.'
+ms: 'Alor Setar merupakan bandar tertua di Malaysia. Monumen ini dibina untuk memperingati ulang tahun ke-250 Bandaraya Alor Setar.',
+en: 'Alor Setar is the oldest city in Malaysia. This monument was built to commemorate the 250th anniversary of Alor Setar City.'
 },
 artifacts: [
 {
@@ -141,12 +207,12 @@ id: 'muzium_diraja',
 name: 'Muzium Diraja',
 lat: 6.1195,
 lng: 100.3667,
-image: '/Muzium Diraja.jpg',
+image: '/Muzium Diraja 3D.png',
 mainIcon: '👑',
 color: 'bg-red-500',
 desc: {
-ms: 'Istana kayu yang pernah menjadi kediaman keluarga diraja Kedah.',
-en: 'A wooden palace that once served as the residence of the Kedah royal family.'
+ms: 'Istana kayu ini telah dibina oleh Sultan Muhammad Jiwa Zainal Abidin Muazzam Shah. Pada asalnya, istana ini dikenali sebagai Istana Kota Setar yang merupakan tempat kediaman Tunku Sultan serta keluarga diraja.',
+en: 'This wooden palace was built by Sultan Muhammad Jiwa Zainal Abidin Muazzam Shah. Originally, it was known as Istana Kota Setar and served as the residence of the Crown Prince and the royal family.'
 },
 artifacts: [
 {
@@ -177,12 +243,12 @@ id: 'balai_besar',
 name: 'Balai Besar',
 lat: 6.1197,
 lng: 100.3666,
-image: '/Balai Besar.jpg',
+image: '/Balai Besar 3D.png',
 mainIcon: '📜',
 color: 'bg-purple-600',
 desc: {
-ms: 'Bangunan rasmi negeri yang dipengaruhi seni bina Thailand.',
-en: 'An official state building influenced by Thai architecture.'
+ms: 'Seni bina Balai Besar banyak dipengaruhi daripada seni bina Thailand. Bangunan ini telah digunakan sebagai Balai Penghadapan dan Pusat Kegiatan Rasmi Negeri.',
+en: 'The architecture of Balai Besar was heavily influenced by Thai architecture. The building has been used as an audience hall and as a center for official state activities.'
 },
 artifacts: [
 {
@@ -213,12 +279,12 @@ id: 'balai_nobat',
 name: 'Balai Nobat',
 lat: 6.1209,
 lng: 100.3665,
-image: '/Balai Nobat.jpg',
+image: '/Balai Nobat 3D.png',
 mainIcon: '🎺',
 color: 'bg-green-500',
 desc: {
-ms: 'Tempat penyimpanan alat muzik nobat diraja Kedah.',
-en: 'The storage place for the royal Nobat musical instruments of Kedah.'
+ms: 'Balai Nobat ini merupakan tempat menyimpan peralatan nobat Diraja Kedah yang terdiri daripada serunai, nafiri, gendang dan gong. Kubah batu di bahagian atasnya melambangkan keislaman Negeri Kedah.',
+en: 'Balai Nobat is the place where the royal nobat instruments of Kedah are kept, including the serunai, nafiri, drums, and gong. The stone dome at the top symbolizes the Islamic heritage of the state of Kedah.'
 },
 artifacts: [
 {
@@ -249,12 +315,12 @@ id: 'pintu_gerbang',
 name: 'Pintu Gerbang Kota Tengah',
 lat: 6.1207,
 lng: 100.3664,
-image: '/Pintu Gerbang Kota Tengah.jpg',
+image: '/Pintu Gerbang 3D.png',
 mainIcon: '🚪',
 color: 'bg-indigo-500',
 desc: {
-ms: 'Pintu gerbang bersejarah yang dibina semula selepas pembinaan Wisma Negeri.',
-en: 'A historic gateway rebuilt after the construction of Wisma Negeri.'
+ms: 'Pintu gerbang ini asalnya terletak di hadapan Istana Kota Tengah. Di atas tapak ini kemudiannya dibina Wisma Negeri pada tahun 1973 sehingga menyebabkan pintu gerbang yang asal itu dibina semula.',
+en: 'This gateway was originally located in front of Istana Kota Tengah. In 1973, Wisma Negeri was built on this site, which led to the reconstruction of the original gateway.'
 },
 artifacts: [
 {
@@ -285,12 +351,12 @@ id: 'galeri_sultan',
 name: 'Galeri Sultan Abdul Halim',
 lat: 6.1213,
 lng: 100.3665,
-image: '/Galeri SAHMS.jpg',
+image: '/Galeri 3D.png',
 mainIcon: '📸',
 color: 'bg-amber-500',
 desc: {
-ms: 'Galeri yang mempamerkan koleksi peribadi Sultan Abdul Halim.',
-en: 'A gallery showcasing the personal collection of Sultan Abdul Halim.'
+ms: 'Pada asalnya, bangunan ini berfungsi sebagai Mahkamah Tinggi Alor Setar. Bangunan ini kemudiannya telah diubah sebagai galeri yang mempamerkan hampir 2000 koleksi peribadi Sultan Kedah iaitu Sultan Abdul Halim Muadzam Shah.',
+en: 'Originally, this building functioned as the Alor Setar High Court. It was later converted into a gallery displaying nearly 2,000 personal collections of the Sultan of Kedah, Sultan Abdul Halim Muadzam Shah.'
 },
 artifacts: [
 {
@@ -321,12 +387,12 @@ id: 'menara_jam',
 name: 'Menara Jam',
 lat: 6.1209,
 lng: 100.3659,
-image: '/Menara Jam.jpg',
+image: '/Menara Jam 3D.png',
 mainIcon: '🕰️',
 color: 'bg-rose-500',
 desc: {
-ms: 'Menara jam bersejarah yang dibina pada tahun 1912.',
-en: 'A historic clock tower built in 1912.'
+ms: 'Menara ini telah dibina pada tahun 1912. Pada zaman dahulu, jam ini akan berbunyi setiap kali masuknya waktu sembahyang fardhu.',
+en: 'This clock tower was built in 1912. In the past, the clock would chime whenever the time for obligatory prayers began.'
 },
 artifacts: [
 {
@@ -370,6 +436,230 @@ const getDistance = (lat1, lon1, lat2, lon2) => {
 
 const getUncaughtArtifacts = (poi, inventory) => {
   return poi.artifacts.filter(art => !inventory.includes(art.id));
+};
+
+// --- HOW TO PLAY SCREEN --- 
+const HowToPlayScreen = ({ language, onFinish }) => {
+
+  const pages = HOW_TO_PLAY[language];
+  const [step, setStep] = useState(0);
+
+  const page = pages[step];
+
+  const nextPage = () => {
+    if (step < pages.length - 1) {
+      setStep(step + 1);
+    } else {
+      onFinish();
+    }
+  };
+
+  return (
+    <div className="w-full h-full bg-gradient-to-br from-amber-50 to-amber-100 flex flex-col">
+
+      {/* Header */}
+      <div className="pt-8 px-6 flex-shrink-0">
+
+        <h1 className="text-3xl font-black text-center text-gray-800">
+          {language === "en" ? "How to Play" : "Cara Bermain"}
+        </h1>
+
+        <p className="text-center text-gray-500 mt-2">
+          {language === "en"
+            ? "Learn how to play before you start."
+            : "Pelajari cara bermain sebelum memulakan."}
+        </p>
+
+      </div>
+
+      {/* Scrollable Content */}
+      <div className="bg-white rounded-[2rem] shadow-xl p-5">
+
+  {page.type === "controls" ? (
+
+    <div className="space-y-4">
+
+      {/* Language */}
+
+      <div className="flex items-center gap-4 bg-amber-50 rounded-2xl p-4">
+
+        <button
+          className="bg-white px-3 py-2 rounded-full shadow-lg text-xs font-bold text-gray-700"
+        >
+          🌐 {language === "en" ? "EN" : "BM"}
+        </button>
+
+        <div>
+
+          <h3 className="font-bold">
+            {language === "en"
+              ? "Language"
+              : "Bahasa"}
+
+          </h3>
+
+          <p className="text-sm text-gray-600">
+            {language === "en"
+              ? "Change the application language."
+              : "Tukar bahasa aplikasi."}
+          </p>
+
+        </div>
+
+      </div>
+
+      {/* How To Play */}
+
+      <div className="flex items-center gap-4 bg-amber-50 rounded-2xl p-4">
+
+        <button
+          className="bg-white px-3 py-2 rounded-full shadow-lg text-xs font-bold text-amber-700"
+        >
+          ❓ {language === "en"
+            ? "How to Play"
+            : "Cara Bermain"}
+        </button>
+
+        <div>
+
+          <h3 className="font-bold">
+            {language === "en"
+              ? "Tutorial"
+              : "Tutorial"}
+          </h3>
+
+          <p className="text-sm text-gray-600">
+            {language === "en"
+              ? "Open this guide again anytime."
+              : "Buka semula panduan ini pada bila-bila masa."}
+          </p>
+
+        </div>
+
+      </div>
+
+      {/* GPS / Simulation */}
+
+      <div className="flex items-center gap-4 bg-amber-50 rounded-2xl p-4">
+
+        <button
+          className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center"
+        >
+          <MapIcon className="w-6 h-6 text-gray-700" />
+        </button>
+
+        <div>
+
+          <h3 className="font-bold">
+            {language === "en"
+              ? "Map Mode"
+              : "Mod Peta"}
+          </h3>
+
+          <p className="text-sm text-gray-600">
+            {language === "en"
+              ? "Switch between GPS mode and Simulation mode."
+              : "Tukar antara mod GPS dan mod simulasi."}
+          </p>
+
+        </div>
+
+      </div>
+
+      {/* Locate */}
+
+      <div className="flex items-center gap-4 bg-amber-50 rounded-2xl p-4">
+
+        <button
+          className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center"
+        >
+          <Crosshair className="w-6 h-6 text-blue-600" />
+        </button>
+
+        <div>
+
+          <h3 className="font-bold">
+            {language === "en"
+              ? "Locate Me"
+              : "Lokasi Saya"}
+          </h3>
+
+          <p className="text-sm text-gray-600">
+            {language === "en"
+              ? "Return the map to your current location."
+              : "Kembali ke lokasi semasa anda."}
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  ) : (
+
+    <>
+
+      <img
+        src={page.image}
+        alt={page.title}
+        className="w-full h-80 object-contain rounded-2xl border border-gray-200"
+      />
+
+      <h2 className="text-2xl font-black text-center text-amber-700 mt-6">
+        {page.title}
+      </h2>
+
+      <p className="text-center text-gray-600 leading-7 mt-4">
+        {page.description}
+      </p>
+
+    </>
+
+  )}
+
+</div>
+      {/* Bottom */}
+      <div className="px-6 py-5 flex-shrink-0">
+
+        {/* Progress Dots */}
+
+        <div className="flex justify-center gap-3 mb-6">
+
+          {pages.map((_, index) => (
+
+            <div
+              key={index}
+              className={`transition-all duration-300 rounded-full ${
+                index === step
+                  ? "w-8 h-3 bg-amber-600"
+                  : "w-3 h-3 bg-gray-300"
+              }`}
+            />
+
+          ))}
+
+        </div>
+
+        {/* Button */}
+
+        <button
+          onClick={nextPage}
+          className="w-full bg-amber-600 hover:bg-amber-700 transition text-white font-bold py-4 rounded-2xl shadow-lg"
+        >
+          {step === pages.length - 1
+            ? language === "en"
+              ? "Start Exploring"
+              : "Mula Jelajah"
+            : language === "en"
+            ? "Next"
+            : "Seterusnya"}
+        </button>
+
+      </div>
+
+    </div>
+  );
 };
 
 // --- 3. MAP SCREEN ---
@@ -420,23 +710,17 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
         const iconHtml = `
   <div class="relative">
     <div style="
-      width:50px;
-      height:50px;
-      border-radius:50%;
-      overflow:hidden;
-      border:3px solid white;
-      box-shadow:0 4px 12px rgba(0,0,0,0.35);
-      background:white;
+      width:70px;
+      height:70px;
     ">
-      <img
-        src="${poi.image}"
-        style="
-          width:100%;
-          height:100%;
-          object-fit:cover;
-          ${isCollected ? 'filter: grayscale(100%); opacity:0.6;' : ''}
-        "
-      />
+      <img src="${poi.image}"
+    style="
+        width:100%;
+        height:100%;
+        object-fit:contain;
+        ${isCollected ? 'filter: grayscale(100%); opacity:0.6;' : ''}
+    "
+         />
     </div>
 
     ${
@@ -464,17 +748,15 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
     }
   </div>
 `;
-        const customIcon = window.L.divIcon({ html: iconHtml, className: '', iconSize: [40, 40], iconAnchor: [20, 20] });
+        const customIcon = window.L.divIcon({ html: iconHtml, className: '', iconSize: [70, 70], iconAnchor: [35, 35] });
         
         window.L.marker([poi.lat, poi.lng], { icon: customIcon })
-          .addTo(map)
-          .bindPopup(`
-            <div class="text-center p-1">
-              <h3 class="font-bold text-gray-800">${poi.name}</h3>
-              <p class="text-xs text-gray-500 mb-2">${poi.desc[language]}</p>
-              <span class="text-[10px] px-2 py-1 bg-gray-100 rounded-full">${isCollected ? '✅ Ditemui' : `📍 Artifak Belum Ditemui`}</span>
-            </div>
-          `);
+        .addTo(map)
+        .bindPopup(`
+       <div class="text-center p-2">
+      <h3 class="font-bold text-gray-800">${poi.name}</h3>
+    </div>
+  `);
       });
 
       const playerIcon = window.L.divIcon({
@@ -490,8 +772,8 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
     </div>
   `,
   className: '',
-  iconSize: [48, 48],
-  iconAnchor: [24, 24]
+  iconSize: [70, 70],
+  iconAnchor: [35, 35]
 });
 
       playerMarkerRef.current = window.L.marker([playerLoc.lat, playerLoc.lng], { icon: playerIcon, zIndexOffset: 1000 }).addTo(map);
@@ -620,14 +902,30 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
             <h1 className="font-extrabold text-gray-800 text-lg leading-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-700 to-amber-500">
               {language === 'en' ? 'Royal Trail' : 'Jejak Diraja'}
             </h1>
+
             <p className="text-xs text-gray-500 font-medium flex items-center gap-1 mt-1">
               <MapPin size={12} /> Alor Setar, Kedah
             </p>
-            <button
-             onClick={() => setShowLanguageSelect(true)}
-             className="pointer-events-auto bg-white/90 px-3 py-2 rounded-full shadow-lg text-xs font-bold text-gray-700 hover:scale-105 transition">
-            🌐 {language === 'en' ? 'EN' : 'BM'}
-            </button>
+
+            <div className="flex gap-2 mt-3">
+
+  {/* Language */}
+  <button
+    onClick={() => setShowLanguageSelect(true)}
+    className="pointer-events-auto bg-white/90 px-3 py-2 rounded-full shadow-lg text-xs font-bold text-gray-700 hover:scale-105 transition"
+  >
+    🌐 {language === 'en' ? 'EN' : 'BM'}
+  </button>
+
+  {/* How to Play */}
+  <button
+    onClick={() => setView('howto')}
+    className="pointer-events-auto bg-white/90 px-3 py-2 rounded-full shadow-lg text-xs font-bold text-amber-700 hover:scale-105 transition flex items-center gap-1"
+  >
+    ❓ {language === 'en' ? 'How to Play' : 'Cara Bermain'}
+  </button>
+
+</div>
           </div>
 
           {nextMission && (
@@ -660,7 +958,6 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
            <div className="bg-amber-100/95 border border-amber-300 text-amber-800 px-4 py-3 rounded-xl text-xs flex items-center gap-3 mb-4 shadow-lg backdrop-blur-sm mx-auto max-w-sm">
              <AlertCircle size={18} className="text-amber-600 flex-shrink-0 animate-pulse" />
              <div className="flex-grow"> {language === 'en'? 'Simulation Mode. Tap the map to move.': 'Mod Simulasi. Klik peta untuk bergerak.'}</div>
-             <button onClick={teleportToAlorSetar} className="bg-amber-200 px-3 py-1.5 rounded-lg font-bold whitespace-nowrap hover:bg-amber-300 text-amber-900 transition">{language === 'en' ? 'Go to Town' : 'Ke Bandar'}</button>
            </div>
         )}
 
@@ -797,6 +1094,54 @@ const ARScreen = ({ poi, artifact, onCatch, onCancel, language }) => {
   </div>
  )}
  </div>
+  );
+};
+
+//---INFO SCREEN ---
+const InfoScreen = ({ poi, language, onContinue }) => {
+  return (
+    <div className="w-full h-full bg-gradient-to-br from-amber-50 to-amber-100 overflow-y-auto font-sans">
+
+      {/* Small Image */}
+      <div className="px-6 pt-8">
+        <img
+          src={poi.image}
+          alt={poi.name}
+          className="w-full h-44 object-contain"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="px-6 pt-6 pb-32">
+
+        <h1 className="text-2xl font-black text-gray-800 text-center">
+          {poi.name}
+        </h1>
+
+        <div className="mt-6 bg-white/90 rounded-[2rem] shadow-[0_15px_40px_rgb(0,0,0,0.08)] p-6">
+
+          <h2 className="text-lg font-bold text-amber-700 mb-3">
+            {language === "en" ? "About this Heritage Site" : "Mengenai Tapak Warisan"}
+          </h2>
+
+          <p className="text-gray-700 leading-8 text-justify">
+            {poi.desc[language]}
+          </p>
+
+        </div>
+
+        <button
+          onClick={onContinue}
+          className="mt-8 w-full bg-amber-600 hover:bg-amber-700 transition text-white font-bold py-4 rounded-2xl shadow-lg"
+        >
+          {language === "en"
+            ? "Continue to Quiz"
+            : "Teruskan ke Kuiz"}
+        </button>
+
+      </div>
+
+    </div>
   );
 };
 
@@ -998,7 +1343,7 @@ const playError = () => {
     setView('ar');
   };
 
-  const handleCatch = () => setView('trivia');
+  const handleCatch = () => setView('info');
 
   const handleTriviaSuccess = (artifactId) => {
     if (!inventory.includes(artifactId)) setInventory([...inventory, artifactId]);
@@ -1095,6 +1440,7 @@ const playError = () => {
          setLanguage('en');
           setLanguageChosen(true);
           setShowLanguageSelect(false);
+          setView("howto");
          }}
         className="bg-white text-[#5C4033] py-4 rounded-2xl font-bold text-lg shadow-xl hover:scale-105 transition"
       >
@@ -1106,6 +1452,7 @@ const playError = () => {
         setLanguage('ms');
         setLanguageChosen(true);
         setShowLanguageSelect(false);
+        setView("howto");
       }}
         className="bg-white text-[#5C4033] py-4 rounded-2xl font-bold text-lg shadow-xl hover:scale-105 transition"
       >
@@ -1119,8 +1466,10 @@ const playError = () => {
 
         {languageChosen && (
         <div className="flex-grow relative h-full w-full">
+          {view === "howto" && (<HowToPlayScreen language={language} onFinish={() => setView("map")}/>)}
           {view === 'map' && <MapScreen playerLoc={playerLoc} setPlayerLoc={setPlayerLoc} onEnterAR={handleEnterAR} inventory={inventory} isRealGPS={isRealGPS} setIsRealGPS={setIsRealGPS} showNotification={showNotification} language={language} setShowLanguageSelect={setShowLanguageSelect}/>}
           {view === 'ar' && activeMission.artifact && <ARScreen poi={activeMission.poi} artifact={activeMission.artifact} onCatch={handleCatch} onCancel={() => setView('map')} language={language}/>}
+          {view === 'info' && activeMission.poi && <InfoScreen poi={activeMission.poi} language={language} onContinue={() => setView('trivia')} />}
           {view === 'trivia' && activeMission.artifact && <TriviaScreen artifact={activeMission.artifact} onSuccess={handleTriviaSuccess} onFail={handleTriviaFail} language={language} />}
           {view === 'inventory' && <InventoryScreen inventory={inventory} language={language}/>}
         </div>
