@@ -10,7 +10,7 @@ const HOW_TO_PLAY = {
       image: "/screen1.png",
       title: "Explore the Map",
       description:
-        "Explore the UUM campus area and follow the map to discover the three trail locations."
+        "Walk around Alor Setar and follow the map to discover nearby heritage sites."
     },
     {
       image: "/screen2.jpg",
@@ -42,7 +42,7 @@ const HOW_TO_PLAY = {
       image: "/screen1.png",
       title: "Jelajah Peta",
       description:
-        "Terokai kawasan kampus UUM dan ikuti peta untuk menemui tiga lokasi dalam jejak ini."
+        "Berjalan di sekitar Alor Setar dan ikuti peta untuk menemui lokasi warisan berhampiran."
     },
     {
       image: "/screen2.png",
@@ -94,93 +94,329 @@ const TEXT = {
 
 // --- 1. DATA: Points of Interest (1 Artifact per Location) ---
 const POIS = [
-  {
-    id: 'dmas',
-    name: 'Dewan Muadzam Shah',
-    lat: 6.4664,
-    lng: 100.5053,
-    image: '/DMAS 3D.png',
-    mainIcon: '🏛️',
-    color: 'bg-blue-600',
-    desc: {
-      ms: 'Dewan Muadzam Shah (DMAS) merupakan salah satu bangunan ikonik Universiti Utara Malaysia (UUM) yang menjadi lokasi pelbagai acara rasmi dan aktiviti universiti.',
-      en: 'Dewan Muadzam Shah (DMAS) is one of the iconic buildings of Universiti Utara Malaysia (UUM), serving as a venue for various official events and university activities.'
-    },
-    artifacts: [
-      {
-        id: 'dmas_1',
-        name: { ms: 'Ikon DMAS', en: 'DMAS Icon' },
-        icon: '🏛️',
-        question: {
-          ms: 'Semasa berada di hadapan Dewan Muadzam Shah, perhatikan reka bentuk bangunan. Apakah ciri yang paling jelas kelihatan?',
-          en: 'While standing in front of Dewan Muadzam Shah, observe the building design. Which feature is most noticeable?'
-        },
-        options: {
-          ms: ['Unsur seni bina tradisional Kedah', 'Reka bentuk seperti rumah moden'],
-          en: ['Traditional Kedah architectural elements', 'Modern house-like design']
-        },
-        answer: { ms: 'Unsur seni bina tradisional Kedah', en: 'Traditional Kedah architectural elements' }
-      }
-    ]
-  },
-  {
-    id: 'flower_clock',
-    name: 'Flower Clock',
-    lat: 6.46782,
-    lng: 100.50528,
-    image: '/Flower Clock 3D.png',
-    mainIcon: '🌼',
-    color: 'bg-yellow-500',
-    desc: {
-      ms: 'Jam Bunga merupakan salah satu mercu tanda landskap di kawasan UUM yang menarik perhatian dengan reka bentuk jam yang dikelilingi tumbuhan dan bunga.',
-      en: 'The Flower Clock is one of the distinctive landscape landmarks at UUM, featuring a clock surrounded by plants and flowers.'
-    },
-    artifacts: [
-      {
-        id: 'fc_1',
-        name: { ms: 'Bunga Ikonik', en: 'Iconic Flower' },
-        icon: '🌼',
-        question: {
-          ms: 'Mengapakah Jam Bunga boleh dianggap sebagai salah satu mercu tanda kampus?',
-          en: 'Why can the Flower Clock be considered one of the campus landmarks?'
-        },
-        options: {
-          ms: ['Digunakan sebagai tempat bergambar', 'Gabungan fungsi jam dengan elemen landskap'],
-          en: ['It is used as the place to take photos', 'It combines a clock with landscaping elements']
-        },
-        answer: { ms: 'Gabungan fungsi jam dengan elemen landskap', en: 'It combines a clock with landscaping elements' }
-      }
-    ]
-  },
-  {
-    id: 'experiment_theater',
-    name: 'Experiment Theater',
-    lat: 6.4661362,
-    lng: 100.5052257,
-    image: '/Experiment Theater 3D.png',
-    mainIcon: '🎭',
-    color: 'bg-blue-500',
-    desc: {
-      ms: 'Panggung Eksperimen merupakan ruang di kawasan DMAS yang digunakan untuk aktiviti persembahan, kebudayaan dan program universiti.',
-      en: 'The Experimental Theatre is a space within the DMAS area used for performances, cultural activities and university programmes.'
-    },
-    artifacts: [
-      {
-        id: 'et_1',
-        name: { ms: 'Topeng Teater', en: 'Theater Mask' },
-        icon: '🎭',
-        question: {
-          ms: 'Selepas tiba di Experimental Theatre, di manakah lokasi Experimental Theatre?',
-          en: 'After arriving at the Experimental Theatre, where is it located?'
-        },
-        options: {
-          ms: ['Di belakang DMAS', 'Di sebelah kanan DMAS'],
-          en: ['Behind DMAS', 'On the right side of DMAS']
-        },
-        answer: { ms: 'Di belakang DMAS', en: 'Behind DMAS' }
-      }
-    ]
-  }
+{
+id: 'medan_bandar',
+name: 'Medan Bandar',
+lat: 6.1191,
+lng: 100.3658,
+image: '/Medan Bandar 3D.png',
+mainIcon: '🏛️',
+color: 'bg-blue-500',
+desc: {
+ms: 'Medan Bandar asalnya dikenali sebagai “Padang Court” disebabkan oleh kedudukannya yang terletak berhampiran dengan bangunan mahkamah lama.',
+en: 'Medan Bandar was originally known as “Padang Court” because it was located near the old courthouse building.'
+},
+artifacts: [
+{
+id: 'mb_1',
+name: {
+ms: 'Tugu Bandar',
+en: 'City Monument'
+},
+icon: '🏛️',
+question: {
+ms: 'Apakah nama asal Medan Bandar?',
+en: 'What was the original name of Medan Bandar?'
+},
+options: {
+ms: ['Padang Court', 'Padang Sultan'],
+en: ['Padang Court', 'Sultan Field']
+},
+answer: {
+ms: 'Padang Court',
+en: 'Padang Court'
+}
+}
+]
+},
+
+{
+id: 'balai_seni',
+name: 'Balai Seni Negeri Kedah',
+lat: 6.1190,
+lng: 100.3655,
+image: '/Balai Seni 3D.png',
+mainIcon: '🎨',
+color: 'bg-pink-500',
+desc: {
+ms: 'Balai Seni pada asalnya dibina khusus untuk Mahkamah Besar pada tahun 1912. Kini, Balai Seni Negeri ini menempatkan hasil karya dan koleksi seni yang terdapat di Negeri Kedah.',
+en: 'The Art Gallery was originally built specifically for the High Court in 1912. Today, the Kedah State Art Gallery houses artworks and art collections found in the state of Kedah.'
+},
+artifacts: [
+{
+id: 'bs_1',
+name: {
+ms: 'Lukisan Warisan',
+en: 'Heritage Painting'
+},
+icon: '🎨',
+question: {
+ms: 'Balai Seni pada asalnya dibina sebagai?',
+en: 'The State Art Gallery was originally built as a?'
+},
+options: {
+ms: ['Sekolah Melayu', 'Mahkamah Besar'],
+en: ['Malay School', 'High Court']
+},
+answer: {
+ms: 'Mahkamah Besar',
+en: 'High Court'
+}
+}
+]
+},
+
+{
+id: 'monumen_alor_setar',
+name: 'Monumen Alor Setar',
+lat: 6.1183,
+lng: 100.3654,
+image: '/Monumen 3D.png',
+mainIcon: '🏙️',
+color: 'bg-cyan-500',
+desc: {
+ms: 'Alor Setar merupakan bandar tertua di Malaysia. Monumen ini dibina untuk memperingati ulang tahun ke-250 Bandaraya Alor Setar.',
+en: 'Alor Setar is the oldest city in Malaysia. This monument was built to commemorate the 250th anniversary of Alor Setar City.'
+},
+artifacts: [
+{
+id: 'ma_1',
+name: {
+ms: 'Mini Monumen',
+en: 'Mini Monument'
+},
+icon: '🏙️',
+question: {
+ms: 'Monumen ini dibina untuk memperingati ulang tahun ke berapa Alor Setar?',
+en: 'This monument was built to commemorate which anniversary of Alor Setar?'
+},
+options: {
+ms: ['200', '250'],
+en: ['200', '250']
+},
+answer: {
+ms: '250',
+en: '250'
+}
+}
+]
+},
+
+{
+id: 'muzium_diraja',
+name: 'Muzium Diraja',
+lat: 6.1195,
+lng: 100.3667,
+image: '/Muzium Diraja 3D.png',
+mainIcon: '👑',
+color: 'bg-red-500',
+desc: {
+ms: 'Istana kayu ini telah dibina oleh Sultan Muhammad Jiwa Zainal Abidin Muazzam Shah. Pada asalnya, istana ini dikenali sebagai Istana Kota Setar yang merupakan tempat kediaman Tunku Sultan serta keluarga diraja.',
+en: 'This wooden palace was built by Sultan Muhammad Jiwa Zainal Abidin Muazzam Shah. Originally, it was known as Istana Kota Setar and served as the residence of the Crown Prince and the royal family.'
+},
+artifacts: [
+{
+id: 'md_1',
+name: {
+ms: 'Mahkota Diraja',
+en: 'Royal Crown'
+},
+icon: '👑',
+question: {
+ms: 'Apakah nama asal Muzium Diraja ini?',
+en: 'What was the original name of the Royal Museum?'
+},
+options: {
+ms: ['Istana Anak Bukit', 'Istana Kota Setar'],
+en: ['Anak Bukit Palace', 'Istana Kota Setar']
+},
+answer: {
+ms: 'Istana Kota Setar',
+en: 'Istana Kota Setar'
+}
+}
+]
+},
+
+{
+id: 'balai_besar',
+name: 'Balai Besar',
+lat: 6.1197,
+lng: 100.3666,
+image: '/Balai Besar 3D.png',
+mainIcon: '📜',
+color: 'bg-purple-600',
+desc: {
+ms: 'Seni bina Balai Besar banyak dipengaruhi daripada seni bina Thailand. Bangunan ini telah digunakan sebagai Balai Penghadapan dan Pusat Kegiatan Rasmi Negeri.',
+en: 'The architecture of Balai Besar was heavily influenced by Thai architecture. The building has been used as an audience hall and as a center for official state activities.'
+},
+artifacts: [
+{
+id: 'bb_1',
+name: {
+ms: 'Dokumen Diraja',
+en: 'Royal Document'
+},
+icon: '📜',
+question: {
+ms: 'Apakah fungsi utama Balai Besar pada masa dahulu?',
+en: 'What was the main function of Balai Besar in the past?'
+},
+options: {
+ms: ['Balai Polis', 'Balai Penghadapan'],
+en: ['Police Station', 'Audience Hall']
+},
+answer: {
+ms: 'Balai Penghadapan',
+en: 'Audience Hall'
+}
+}
+]
+},
+
+{
+id: 'balai_nobat',
+name: 'Balai Nobat',
+lat: 6.1209,
+lng: 100.3665,
+image: '/Balai Nobat 3D.png',
+mainIcon: '🎺',
+color: 'bg-green-500',
+desc: {
+ms: 'Balai Nobat ini merupakan tempat menyimpan peralatan nobat Diraja Kedah yang terdiri daripada serunai, nafiri, gendang dan gong. Kubah batu di bahagian atasnya melambangkan keislaman Negeri Kedah.',
+en: 'Balai Nobat is the place where the royal nobat instruments of Kedah are kept, including the serunai, nafiri, drums, and gong. The stone dome at the top symbolizes the Islamic heritage of the state of Kedah.'
+},
+artifacts: [
+{
+id: 'bn_1',
+name: {
+ms: 'Serunai Diraja',
+en: 'Royal Serunai'
+},
+icon: '🎺',
+question: {
+ms: 'Apakah yang disimpan di Balai Nobat?',
+en: 'What is stored in Balai Nobat?'
+},
+options: {
+ms: ['Alat Muzik Diraja', 'Senjata Diraja'],
+en: ['Royal Musical Instruments', 'Royal Weapons']
+},
+answer: {
+ms: 'Alat Muzik Diraja',
+en: 'Royal Musical Instruments'
+}
+}
+]
+},
+
+{
+id: 'pintu_gerbang',
+name: 'Pintu Gerbang Kota Tengah',
+lat: 6.1207,
+lng: 100.3664,
+image: '/Pintu Gerbang 3D.png',
+mainIcon: '🚪',
+color: 'bg-indigo-500',
+desc: {
+ms: 'Pintu gerbang ini asalnya terletak di hadapan Istana Kota Tengah. Di atas tapak ini kemudiannya dibina Wisma Negeri pada tahun 1973 sehingga menyebabkan pintu gerbang yang asal itu dibina semula.',
+en: 'This gateway was originally located in front of Istana Kota Tengah. In 1973, Wisma Negeri was built on this site, which led to the reconstruction of the original gateway.'
+},
+artifacts: [
+{
+id: 'pg_1',
+name: {
+ms: 'Gerbang Kota',
+en: 'City Gateway'
+},
+icon: '🚪',
+question: {
+ms: 'Pintu gerbang ini pada asalnya terletak di hadapan?',
+en: 'This gateway was originally located in front of?'
+},
+options: {
+ms: ['Istana Kota Tengah', 'Balai Besar'],
+en: ['Istana Kota Tengah', 'Balai Besar']
+},
+answer: {
+ms: 'Istana Kota Tengah',
+en: 'Istana Kota Tengah'
+}
+}
+]
+},
+
+{
+id: 'galeri_sultan',
+name: 'Galeri Sultan Abdul Halim',
+lat: 6.1213,
+lng: 100.3665,
+image: '/Galeri 3D.png',
+mainIcon: '📸',
+color: 'bg-amber-500',
+desc: {
+ms: 'Pada asalnya, bangunan ini berfungsi sebagai Mahkamah Tinggi Alor Setar. Bangunan ini kemudiannya telah diubah sebagai galeri yang mempamerkan hampir 2000 koleksi peribadi Sultan Kedah iaitu Sultan Abdul Halim Muadzam Shah.',
+en: 'Originally, this building functioned as the Alor Setar High Court. It was later converted into a gallery displaying nearly 2,000 personal collections of the Sultan of Kedah, Sultan Abdul Halim Muadzam Shah.'
+},
+artifacts: [
+{
+id: 'gs_1',
+name: {
+ms: 'Koleksi Diraja',
+en: 'Royal Collection'
+},
+icon: '📸',
+question: {
+ms: 'Bangunan ini pada asalnya digunakan sebagai?',
+en: 'This building was originally used as a?'
+},
+options: {
+ms: ['Mahkamah Negeri', 'Mahkamah Tinggi'],
+en: ['State Court', 'High Court']
+},
+answer: {
+ms: 'Mahkamah Tinggi',
+en: 'High Court'
+}
+}
+]
+},
+
+{
+id: 'menara_jam',
+name: 'Menara Jam',
+lat: 6.1209,
+lng: 100.3659,
+image: '/Menara Jam 3D.png',
+mainIcon: '🕰️',
+color: 'bg-rose-500',
+desc: {
+ms: 'Menara ini telah dibina pada tahun 1912. Pada zaman dahulu, jam ini akan berbunyi setiap kali masuknya waktu sembahyang fardhu.',
+en: 'This clock tower was built in 1912. In the past, the clock would chime whenever the time for obligatory prayers began.'
+},
+artifacts: [
+{
+id: 'mj_1',
+name: {
+ms: 'Jam Antik',
+en: 'Antique Clock'
+},
+icon: '🕰️',
+question: {
+ms: 'Pada zaman dahulu, Menara Jam berbunyi ketika?',
+en: 'In the past, the Clock Tower rang during?'
+},
+options: {
+ms: ['Waktu Solat', 'Waktu Pasar Dibuka'],
+en: ['Prayer Time', 'Market Opening Time']
+},
+answer: {
+ms: 'Waktu Solat',
+en: 'Prayer Time'
+}
+}
+]
+}
 ];
 
 // --- 2. UTILITY (Calculate Distance) ---
@@ -219,7 +455,7 @@ const HowToPlayScreen = ({ language, onFinish }) => {
   };
 
   return (
-    <div className="w-full h-full bg-gradient-to-br from-[#FFFBE6] to-[#FFF7C2] flex flex-col">
+    <div className="w-full h-full bg-gradient-to-br from-amber-50 to-amber-100 flex flex-col">
 
       {/* Header */}
       <div className="pt-8 px-6 flex-shrink-0">
@@ -245,7 +481,7 @@ const HowToPlayScreen = ({ language, onFinish }) => {
 
       {/* Language */}
 
-      <div className="flex items-center gap-4 bg-[#FFFBE6] rounded-2xl p-4">
+      <div className="flex items-center gap-4 bg-amber-50 rounded-2xl p-4">
 
         <button
           className="bg-white px-3 py-2 rounded-full shadow-lg text-xs font-bold text-gray-700"
@@ -274,10 +510,10 @@ const HowToPlayScreen = ({ language, onFinish }) => {
 
       {/* How To Play */}
 
-      <div className="flex items-center gap-4 bg-[#FFFBE6] rounded-2xl p-4">
+      <div className="flex items-center gap-4 bg-amber-50 rounded-2xl p-4">
 
         <button
-          className="bg-white px-3 py-2 rounded-full shadow-lg text-xs font-bold text-[#174A9E]"
+          className="bg-white px-3 py-2 rounded-full shadow-lg text-xs font-bold text-amber-700"
         >
           ❓ {language === "en"
             ? "How to Play"
@@ -304,7 +540,7 @@ const HowToPlayScreen = ({ language, onFinish }) => {
 
       {/* GPS / Simulation */}
 
-      <div className="flex items-center gap-4 bg-[#FFFBE6] rounded-2xl p-4">
+      <div className="flex items-center gap-4 bg-amber-50 rounded-2xl p-4">
 
         <button
           className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center"
@@ -332,7 +568,7 @@ const HowToPlayScreen = ({ language, onFinish }) => {
 
       {/* Locate */}
 
-      <div className="flex items-center gap-4 bg-[#FFFBE6] rounded-2xl p-4">
+      <div className="flex items-center gap-4 bg-amber-50 rounded-2xl p-4">
 
         <button
           className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center"
@@ -370,7 +606,7 @@ const HowToPlayScreen = ({ language, onFinish }) => {
         className="w-full h-80 object-contain rounded-2xl border border-gray-200"
       />
 
-      <h2 className="text-2xl font-black text-center text-[#174A9E] mt-6">
+      <h2 className="text-2xl font-black text-center text-amber-700 mt-6">
         {page.title}
       </h2>
 
@@ -396,7 +632,7 @@ const HowToPlayScreen = ({ language, onFinish }) => {
               key={index}
               className={`transition-all duration-300 rounded-full ${
                 index === step
-                  ? "w-8 h-3 bg-[#174A9E]"
+                  ? "w-8 h-3 bg-amber-600"
                   : "w-3 h-3 bg-gray-300"
               }`}
             />
@@ -409,7 +645,7 @@ const HowToPlayScreen = ({ language, onFinish }) => {
 
         <button
           onClick={nextPage}
-          className="w-full bg-[#174A9E] hover:bg-[#174A9E] transition text-white font-bold py-4 rounded-2xl shadow-lg"
+          className="w-full bg-amber-600 hover:bg-amber-700 transition text-white font-bold py-4 rounded-2xl shadow-lg"
         >
           {step === pages.length - 1
             ? language === "en"
@@ -427,7 +663,7 @@ const HowToPlayScreen = ({ language, onFinish }) => {
 };
 
 // --- 3. MAP SCREEN ---
-const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, setIsRealGPS, showNotification, language, setShowLanguageSelect, onOpenHowTo }) => {
+const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, setIsRealGPS, showNotification, language, setShowLanguageSelect }) => {
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const playerMarkerRef = useRef(null);
@@ -460,12 +696,11 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
     if (!mapInstanceRef.current) {
       const map = window.L.map(mapRef.current, {
         zoomControl: false,
-        attributionControl: true
+        attributionControl: false
       }).setView([playerLoc.lat, playerLoc.lng], 16);
 
-      window.L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; OpenStreetMap contributors'
+      window.L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        maxZoom: 20
       }).addTo(map);
 
       POIS.forEach(poi => {
@@ -485,20 +720,7 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
         object-fit:contain;
         ${isCollected ? 'filter: grayscale(100%); opacity:0.6;' : ''}
     "
-    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
          />
-      <div style="
-        display:none;
-        width:70px;
-        height:70px;
-        align-items:center;
-        justify-content:center;
-        border-radius:50%;
-        background:#ffffff;
-        border:4px solid #174A9E;
-        box-shadow:0 8px 18px rgba(0,0,0,0.18);
-        font-size:34px;
-      ">${poi.mainIcon}</div>
     </div>
 
     ${
@@ -526,7 +748,7 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
     }
   </div>
 `;
-        const customIcon = window.L.divIcon({ html: iconHtml, className: '', iconSize: [140, 140], iconAnchor: [70, 140] });
+        const customIcon = window.L.divIcon({ html: iconHtml, className: '', iconSize: [70, 70], iconAnchor: [35, 35] });
         
         window.L.marker([poi.lat, poi.lng], { icon: customIcon })
         .addTo(map)
@@ -540,9 +762,9 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
       const playerIcon = window.L.divIcon({
   html: `
     <div class="relative flex items-center justify-center w-12 h-12">
-      <div class="absolute w-10 h-10 bg-[#FFD400] rounded-full opacity-50 animate-ping"></div>
+      <div class="absolute w-10 h-10 bg-amber-600 rounded-full opacity-40 animate-ping"></div>
 
-      <div class="absolute w-10 h-10 bg-white rounded-full border-[3px] border-[#174A9E] shadow-xl flex items-center justify-center overflow-hidden z-10">
+      <div class="absolute w-10 h-10 bg-white rounded-full border-[3px] border-amber-700 shadow-xl flex items-center justify-center overflow-hidden z-10">
          <span class="text-xl">👩</span>
       </div>
 
@@ -555,7 +777,7 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
 });
 
       playerMarkerRef.current = window.L.marker([playerLoc.lat, playerLoc.lng], { icon: playerIcon, zIndexOffset: 1000 }).addTo(map);
-      accuracyCircleRef.current = window.L.circle([playerLoc.lat, playerLoc.lng], { radius: 30, color: '#174A9E', fillColor: '#174A9E', fillOpacity: 0.1, weight: 1 }).addTo(map);
+      accuracyCircleRef.current = window.L.circle([playerLoc.lat, playerLoc.lng], { radius: 30, color: '#3b82f6', fillColor: '#3b82f6', fillOpacity: 0.1, weight: 1 }).addTo(map);
  
       // Simulation Click Logic
       map.on('click', (e) => {
@@ -568,7 +790,7 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
     } else {
       playerMarkerRef.current.setLatLng([playerLoc.lat, playerLoc.lng]);
       accuracyCircleRef.current.setLatLng([playerLoc.lat, playerLoc.lng]);
-      accuracyCircleRef.current.setRadius(playerLoc.accuracy || 20);
+      accuracyCircleRef.current.setRadius(playerLoc.accuracy || 30);
     }
 
     let closest = null;
@@ -590,7 +812,7 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
       }
     });
 
-    if (closest && closest.distance <= 25) setNearbyPOI(closest);
+    if (closest && closest.distance <= 60) setNearbyPOI(closest);
     else setNearbyPOI(null);
 
     setNextMission(closestUnvisited);
@@ -621,33 +843,6 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
     return () => clearTimeout(timeoutId);
   }, [playerLoc.lat, playerLoc.lng, nextMission?.id]);
 
-  // Draw the walking route on the Leaflet map.
-  useEffect(() => {
-    if (!mapInstanceRef.current) return;
-
-    if (routeLineRef.current) {
-      mapInstanceRef.current.removeLayer(routeLineRef.current);
-      routeLineRef.current = null;
-    }
-
-    if (routePoints && routePoints.length > 1) {
-      routeLineRef.current = window.L.polyline(routePoints, {
-        color: '#174A9E',
-        weight: 5,
-        opacity: 0.85,
-        dashArray: '10 10',
-        lineCap: 'round'
-      }).addTo(mapInstanceRef.current);
-    }
-
-    return () => {
-      if (routeLineRef.current && mapInstanceRef.current) {
-        mapInstanceRef.current.removeLayer(routeLineRef.current);
-        routeLineRef.current = null;
-      }
-    };
-  }, [routePoints]);
-
   // Real GPS Logic
   useEffect(() => {
     let watchId;
@@ -672,11 +867,11 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
   const centerMap = () => { if (mapInstanceRef.current) mapInstanceRef.current.flyTo([playerLoc.lat, playerLoc.lng], 17, { duration: 1 }); };
   const focusNextMission = () => { if (mapInstanceRef.current && nextMission) mapInstanceRef.current.flyTo([nextMission.lat, nextMission.lng], 18, { duration: 1 }); };
 
-  const teleportToDMAS = () => {
+  const teleportToAlorSetar = () => {
     setIsRealGPS(false);
-    const dmasLoc = { lat: 6.4664, lng: 100.5053, accuracy: 30 };
-    setPlayerLoc(dmasLoc);
-    if (mapInstanceRef.current) mapInstanceRef.current.flyTo([dmasLoc.lat, dmasLoc.lng], 18);
+    const alorSetarLoc = { lat: 6.1194, lng: 100.3660 };
+    setPlayerLoc(alorSetarLoc);
+    if (mapInstanceRef.current) mapInstanceRef.current.flyTo([alorSetarLoc.lat, alorSetarLoc.lng], 16);
   };
 
   const handleStartAR = () => {
@@ -687,19 +882,19 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
   };
 
   return (
-    <div className="relative w-full h-full flex flex-col bg-[#EEF4FF]">
+    <div className="relative w-full h-full flex flex-col bg-slate-100">
       <style>{`@keyframes flowRoute { to { stroke-dashoffset: -24; } } .animated-route { animation: flowRoute 1s linear infinite; }`}</style>
       <div ref={mapRef} className="flex-grow w-full z-0"></div>
       
       <div className="absolute top-4 left-4 right-4 z-[400] flex justify-between items-start pointer-events-none">
         <div className="flex flex-col gap-2 pointer-events-auto">
           <div className="bg-white/90 p-3 rounded-2xl shadow-xl backdrop-blur-md border border-white/50">
-            <h1 className="font-extrabold text-[#174A9E] text-lg leading-tight">
-              Jejak Dewan Muadzam Shah
+            <h1 className="font-extrabold text-gray-800 text-lg leading-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-700 to-amber-500">
+              {language === 'en' ? 'Royal Trail' : 'Jejak Diraja'}
             </h1>
 
             <p className="text-xs text-gray-500 font-medium flex items-center gap-1 mt-1">
-              <MapPin size={12} /> Universiti Utara Malaysia
+              <MapPin size={12} /> Alor Setar, Kedah
             </p>
 
             <div className="flex gap-2 mt-3">
@@ -714,8 +909,8 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
 
   {/* How to Play */}
   <button
-    onClick={onOpenHowTo}
-    className="pointer-events-auto bg-white/90 px-3 py-2 rounded-full shadow-lg text-xs font-bold text-[#174A9E] hover:scale-105 transition flex items-center gap-1"
+    onClick={() => setView('howto')}
+    className="pointer-events-auto bg-white/90 px-3 py-2 rounded-full shadow-lg text-xs font-bold text-amber-700 hover:scale-105 transition flex items-center gap-1"
   >
     ❓ {language === 'en' ? 'How to Play' : 'Cara Bermain'}
   </button>
@@ -724,8 +919,8 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
           </div>
 
           {nextMission && (
-            <div onClick={focusNextMission} className="bg-white/95 p-2.5 rounded-xl shadow-lg backdrop-blur-md border-l-4 border-[#174A9E] cursor-pointer hover:bg-[#FFF7C2] transition-colors pointer-events-auto">
-              <p className="text-[10px] font-bold text-[#174A9E] uppercase tracking-wider mb-0.5">📍 {language === 'en' ? 'Next Mission:' : 'Misi Seterusnya:'}</p>
+            <div onClick={focusNextMission} className="bg-white/95 p-2.5 rounded-xl shadow-lg backdrop-blur-md border-l-4 border-amber-600 cursor-pointer hover:bg-amber-100 transition-colors pointer-events-auto">
+              <p className="text-[10px] font-bold text-amber-600 uppercase tracking-wider mb-0.5">📍 {language === 'en' ? 'Next Mission:' : 'Misi Seterusnya:'}</p>
               <div className="flex items-center gap-2">
                 <span className="text-lg">{nextMission.mainIcon}</span>
                 <div className="flex flex-col">
@@ -739,7 +934,7 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
         </div>
 
         <div className="flex flex-col gap-2 pointer-events-auto">
-          <button onClick={() => setIsRealGPS(!isRealGPS)} className={`p-3 rounded-full shadow-lg border-2 transition-all flex items-center justify-center ${isRealGPS ? 'bg-[#174A9E] text-white border-[#FFD400]' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'}`} title="Tukar GPS / Simulasi">
+          <button onClick={() => setIsRealGPS(!isRealGPS)} className={`p-3 rounded-full shadow-lg border-2 transition-all flex items-center justify-center ${isRealGPS ? 'bg-amber-700 text-white border-amber-500' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'}`} title="Tukar GPS / Simulasi">
             {isRealGPS ? <Navigation size={20} /> : <MapIcon size={20} />}
           </button>
           <button onClick={centerMap} className="p-3 bg-white text-blue-600 rounded-full shadow-lg border-2 border-gray-200 hover:bg-blue-50 transition-all flex items-center justify-center" title="Tengah Peta">
@@ -750,19 +945,19 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
 
       <div className="absolute bottom-24 w-full px-4 z-[400]">
         {!isRealGPS && (
-           <div className="bg-[#FFF7C2]/95 border border-[#F1D33B] text-[#174A9E] px-4 py-3 rounded-xl text-xs flex items-center gap-3 mb-4 shadow-lg backdrop-blur-sm mx-auto max-w-sm">
-             <AlertCircle size={18} className="text-[#174A9E] flex-shrink-0 animate-pulse" />
+           <div className="bg-amber-100/95 border border-amber-300 text-amber-800 px-4 py-3 rounded-xl text-xs flex items-center gap-3 mb-4 shadow-lg backdrop-blur-sm mx-auto max-w-sm">
+             <AlertCircle size={18} className="text-amber-600 flex-shrink-0 animate-pulse" />
              <div className="flex-grow"> {language === 'en'? 'Simulation Mode. Tap the map to move.': 'Mod Simulasi. Klik peta untuk bergerak.'}</div>
            </div>
         )}
 
         {nearbyPOI && getUncaughtArtifacts(nearbyPOI, inventory).length > 0 && (
-          <div className="mx-auto max-w-sm bg-gradient-to-r from-[#174A9E] to-[#123B7A] p-4 rounded-2xl shadow-[0_10px_25px_rgba(23,59,122,0.40)] text-white flex items-center justify-between border border-[#174A9E] animate-[bounce_2s_infinite]">
+          <div className="mx-auto max-w-sm bg-gradient-to-r from-amber-700 to-amber-600 p-4 rounded-2xl shadow-[0_10px_25px_rgba(146,64,14,0.4)] text-white flex items-center justify-between border border-amber-600 animate-[bounce_2s_infinite]">
             <div className="flex items-center gap-3">
               <span className="text-4xl drop-shadow-md">{getUncaughtArtifacts(nearbyPOI, inventory)[0].icon}</span>
               <div>
                 <p className="font-bold text-lg leading-tight">{nearbyPOI.name}</p>
-                <p className="text-xs text-blue-100 font-medium tracking-wide">{language === 'en'? 'Artifact Found!': 'Artifak Ditemui!'}</p>
+                <p className="text-xs text-amber-100 font-medium tracking-wide">{language === 'en'? 'Artifact Found!': 'Artifak Ditemui!'}</p>
               </div>
             </div>
             <button
@@ -771,7 +966,7 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
     clickSound.play().catch(() => {});
     handleStartAR();
   }}
-  className="bg-white text-[#174A9E] px-5 py-2.5 rounded-full font-bold shadow-lg flex items-center gap-2 hover:scale-105 active:scale-95 transition-all whitespace-nowrap"
+  className="bg-white text-amber-600 px-5 py-2.5 rounded-full font-bold shadow-lg flex items-center gap-2 hover:scale-105 active:scale-95 transition-all whitespace-nowrap"
 >
   <Camera size={18} />
   {language === 'en' ? 'Capture' : 'Tangkap'}
@@ -878,7 +1073,7 @@ const ARScreen = ({ poi, artifact, onCatch, onCancel, language }) => {
   <div className="absolute inset-0 flex items-center justify-center z-30 bg-white/20 backdrop-blur-sm transition-all duration-300">
     <div className="animate-[scaleIn_0.6s_cubic-bezier(0.175,0.885,0.32,1.275)_forwards] text-center flex flex-col items-center">
       <div className="relative">
-        <div className="absolute inset-0 bg-[#FFD400] blur-3xl opacity-50 rounded-full"></div>
+        <div className="absolute inset-0 bg-amber-500 blur-3xl opacity-50 rounded-full"></div>
         <span className="text-9xl relative z-10">{artifact.icon}</span>
       </div>
 
@@ -895,24 +1090,15 @@ const ARScreen = ({ poi, artifact, onCatch, onCancel, language }) => {
 //---INFO SCREEN ---
 const InfoScreen = ({ poi, language, onContinue }) => {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-[#FFFBE6] to-[#FFF7C2] overflow-y-auto font-sans">
+    <div className="w-full h-full bg-gradient-to-br from-amber-50 to-amber-100 overflow-y-auto font-sans">
 
       {/* Small Image */}
       <div className="px-6 pt-8">
-        <div className="w-full h-44 flex items-center justify-center">
-          <img
-            src={poi.image}
-            alt={poi.name}
-            className="w-full h-44 object-contain"
-            onError={(e) => {
-              e.currentTarget.style.display = 'none';
-              if (e.currentTarget.nextElementSibling) e.currentTarget.nextElementSibling.style.display = 'flex';
-            }}
-          />
-          <div className="hidden w-32 h-32 rounded-full bg-[#174A9E] border-8 border-[#FFD400] items-center justify-center text-6xl shadow-xl">
-            {poi.mainIcon}
-          </div>
-        </div>
+        <img
+          src={poi.image}
+          alt={poi.name}
+          className="w-full h-44 object-contain"
+        />
       </div>
 
       {/* Content */}
@@ -924,7 +1110,7 @@ const InfoScreen = ({ poi, language, onContinue }) => {
 
         <div className="mt-6 bg-white/90 rounded-[2rem] shadow-[0_15px_40px_rgb(0,0,0,0.08)] p-6">
 
-          <h2 className="text-lg font-bold text-[#174A9E] mb-3">
+          <h2 className="text-lg font-bold text-amber-700 mb-3">
             {language === "en" ? "About this Heritage Site" : "Mengenai Tapak Warisan"}
           </h2>
 
@@ -936,7 +1122,7 @@ const InfoScreen = ({ poi, language, onContinue }) => {
 
         <button
           onClick={onContinue}
-          className="mt-8 w-full bg-[#174A9E] hover:bg-[#174A9E] transition text-white font-bold py-4 rounded-2xl shadow-lg"
+          className="mt-8 w-full bg-amber-600 hover:bg-amber-700 transition text-white font-bold py-4 rounded-2xl shadow-lg"
         >
           {language === "en"
             ? "Continue to Quiz"
@@ -966,13 +1152,13 @@ const TriviaScreen = ({ artifact, onSuccess, onFail, language }) => {
 };
 
   return (
-    <div className="w-full h-full bg-gradient-to-br from-[#FFFBE6] to-[#FFF7C2] flex flex-col items-center p-6 pt-20 relative overflow-y-auto font-sans">
-      <div className="absolute -top-24 -right-24 w-80 h-80 bg-[#FFF0A3] rounded-full blur-3xl opacity-50"></div>
-      <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-[#FFF0A3] rounded-full blur-3xl opacity-50"></div>
+    <div className="w-full h-full bg-gradient-to-br from-amber-50 to-amber-100 flex flex-col items-center p-6 pt-20 relative overflow-y-auto font-sans">
+      <div className="absolute -top-24 -right-24 w-80 h-80 bg-amber-200 rounded-full blur-3xl opacity-50"></div>
+      <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-amber-200 rounded-full blur-3xl opacity-50"></div>
 
       <div className="z-10 flex flex-col items-center w-full max-w-md pb-32">
         <div className="relative mb-6">
-          <div className="w-28 h-28 bg-white rounded-[2rem] shadow-2xl flex items-center justify-center text-6xl animate-[bounce_3s_infinite] border-4 border-[#FFFBE6] relative z-10">
+          <div className="w-28 h-28 bg-white rounded-[2rem] shadow-2xl flex items-center justify-center text-6xl animate-[bounce_3s_infinite] border-4 border-amber-50 relative z-10">
             {artifact.icon}
           </div>
           <div className="absolute -bottom-3 -right-3 bg-yellow-400 text-yellow-900 text-xs font-black px-3 py-1.5 rounded-xl border-2 border-white shadow-lg transform rotate-12 z-20 uppercase tracking-wider">
@@ -981,8 +1167,8 @@ const TriviaScreen = ({ artifact, onSuccess, onFail, language }) => {
         </div>
 
         <h2 className="text-2xl font-black text-gray-800 text-center mb-2">{language === 'en'? 'Artifacts Collected': 'Artifak Ditemui'}</h2>
-        <p className="text-sm text-[#174A9E] text-center mb-8 bg-white/60 px-5 py-2.5 rounded-2xl backdrop-blur-sm inline-block font-medium shadow-sm">
-          {language === 'en'? 'Answer correctly to collect': 'Jawab dengan betul untuk mendapatkan'} <br/><span className="font-bold text-[#123B7A]">{artifact.name[language]}</span>.
+        <p className="text-sm text-amber-800 text-center mb-8 bg-white/60 px-5 py-2.5 rounded-2xl backdrop-blur-sm inline-block font-medium shadow-sm">
+          {language === 'en'? 'Answer correctly to collect': 'Jawab dengan betul untuk mendapatkan'} <br/><span className="font-bold text-amber-900">{artifact.name[language]}</span>.
         </p>
 
         <div className="bg-white/90 p-7 rounded-[2rem] shadow-[0_15px_40px_rgb(0,0,0,0.08)] w-full backdrop-blur-md border border-white">
@@ -990,12 +1176,12 @@ const TriviaScreen = ({ artifact, onSuccess, onFail, language }) => {
           
           <div className="space-y-4">
             {artifact.options[language].map((opt, i) => {
-              let btnClass = "bg-gray-50 border-2 border-gray-100 text-gray-700 hover:border-[#FFD400] hover:bg-[#FFFBE6]";
+              let btnClass = "bg-gray-50 border-2 border-gray-100 text-gray-700 hover:border-amber-400 hover:bg-amber-50";
               let icon = null;
 
               if (selected) {
                 if (opt === artifact.answer[language]) {
-                  btnClass = "bg-[#FFD400] text-white border-[#174A9E] shadow-[0_10px_20px_rgba(23,59,122,0.30)] scale-[1.02] transform transition-all";
+                  btnClass = "bg-amber-500 text-white border-amber-600 shadow-[0_10px_20px_rgba(146,64,14,0.3)] scale-[1.02] transform transition-all";
                   icon = <CheckCircle size={22} className="text-white" />;
                 } else if (opt === selected) {
                   btnClass = "bg-red-500 text-white border-red-600 opacity-90";
@@ -1026,14 +1212,14 @@ const InventoryScreen = ({ inventory, language }) => {
 
   return (
     <div className="w-full h-full bg-slate-50 flex flex-col font-sans">
-      <div className="bg-gradient-to-br from-[#174A9E] to-[#123B7A] pt-14 pb-10 px-8 text-white shadow-xl rounded-b-[2.5rem] relative overflow-hidden flex-shrink-0">
+      <div className="bg-gradient-to-br from-amber-700 to-amber-600 pt-14 pb-10 px-8 text-white shadow-xl rounded-b-[2.5rem] relative overflow-hidden flex-shrink-0">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full transform translate-x-1/3 -translate-y-1/3"></div>
         <div className="relative z-10">
           <h2 className="text-3xl font-black mb-1 tracking-tight">{language === 'en' ? 'Inventory' : 'Inventori'}</h2>
-          <p className="text-blue-100 text-sm font-medium"> {language === 'en'? 'Explore UUM': 'Jelajah UUM'} </p>
+          <p className="text-amber-100 text-sm font-medium"> {language === 'en'? 'Explore Alor Setar': 'Jelajah Alor Setar'} </p>
           <div className="mt-6">
             <div className="flex justify-between text-sm font-bold mb-3">
-              <span className="uppercase tracking-wider text-[10px] text-blue-100">{language === 'en'? 'Artifact Found!': 'Artifak Ditemui!'}</span>
+              <span className="uppercase tracking-wider text-[10px] text-amber-100">{language === 'en'? 'Artifact Found!': 'Artifak Ditemui!'}</span>
               <span className="bg-black/20 px-3 py-1 rounded-full text-xs">{inventory.length} / {totalArtifacts}</span>
             </div>
             <div className="w-full bg-black/20 rounded-full h-2.5 backdrop-blur-sm border border-white/10 overflow-hidden">
@@ -1047,7 +1233,7 @@ const InventoryScreen = ({ inventory, language }) => {
 
       <div className="flex-grow p-6 overflow-y-auto pb-32 space-y-5">
         {progress === 100 && (
-          <div className="bg-gradient-to-r from-[#FFD400] to-orange-500 p-6 rounded-[2rem] text-white text-center shadow-xl mb-6">
+          <div className="bg-gradient-to-r from-amber-400 to-orange-500 p-6 rounded-[2rem] text-white text-center shadow-xl mb-6">
             <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
                <Gift size={32} className="text-white animate-bounce" />
             </div>
@@ -1057,9 +1243,9 @@ const InventoryScreen = ({ inventory, language }) => {
             <div className="bg-white text-gray-800 p-5 rounded-2xl border-dashed border-2 border-orange-200">
                <p className="font-bold text-sm mb-1 text-orange-600">{language === 'en'? 'EXCITING REWARD AWAITS YOU': 'HADIAH MENARIK MENANTI ANDA'}</p>
                <p className="text-xs text-gray-500 mb-3">{language === 'en'? 'Show this voucher at:': 'Tunjukkan voucher ini di:'}</p>
-               <p className="font-black text-md text-[#174A9E] leading-tight">{language === 'en'? 'UUM Information Centre': 'Pusat Informasi UUM'}</p>
+               <p className="font-black text-md text-amber-700 leading-tight">{language === 'en'? 'Tourist Information Office<br/>Alor Setar': 'Pejabat Pusat Pelancongan<br/>Alor Setar'}</p>
                <div className="mt-4 py-3 bg-gray-50 rounded-xl border border-gray-200">
-                 <p className="font-mono font-black text-2xl tracking-widest text-gray-800">UUM-DMAS</p>
+                 <p className="font-mono font-black text-2xl tracking-widest text-gray-800">SL-M27S</p>
                </div>
             </div>
           </div>
@@ -1070,9 +1256,9 @@ const InventoryScreen = ({ inventory, language }) => {
           const isPoiComplete = caughtInPoi.length === poi.artifacts.length;
 
           return (
-            <div key={poi.id} className={`bg-white rounded-[2rem] p-4 flex items-center justify-between border-2 shadow-sm ${isPoiComplete ? 'border-[#FFF0A3] shadow-amber-50' : 'border-gray-100'}`}>
+            <div key={poi.id} className={`bg-white rounded-[2rem] p-4 flex items-center justify-between border-2 shadow-sm ${isPoiComplete ? 'border-amber-100 shadow-amber-50' : 'border-gray-100'}`}>
               <div className="flex items-center gap-3">
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-2xl ${isPoiComplete ? 'bg-[#FFF7C2]' : 'bg-gray-100 grayscale opacity-60'}`}>
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-2xl ${isPoiComplete ? 'bg-amber-100' : 'bg-gray-100 grayscale opacity-60'}`}>
                   {poi.mainIcon}
                 </div>
                 <div>
@@ -1081,7 +1267,7 @@ const InventoryScreen = ({ inventory, language }) => {
                 </div>
               </div>
               <div className="flex items-center">
-                {isPoiComplete ? <CheckCircle size={24} className="text-[#174A9E] mr-2" /> : <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 text-xs font-bold mr-2">🔒</div>}
+                {isPoiComplete ? <CheckCircle size={24} className="text-amber-500 mr-2" /> : <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 text-xs font-bold mr-2">🔒</div>}
               </div>
             </div>
           );
@@ -1105,7 +1291,7 @@ export default function App() {
   const [language, setLanguage] = useState('ms');
   const t = TEXT[language];
   const [languageChosen, setLanguageChosen] = useState(false);
-  const [playerLoc, setPlayerLoc] = useState({ lat: 6.4664, lng: 100.5053, accuracy: 30 }); // Starting at Dewan Muadzam Shah
+  const [playerLoc, setPlayerLoc] = useState({ lat: 6.1194, lng: 100.3660, accuracy: 50 }); // Starting at Alor Setar
 
   const playClick = () => {
   clickSound.currentTime = 0;
@@ -1166,7 +1352,7 @@ const playError = () => {
     <div className="w-full h-[100dvh] bg-gray-900 flex justify-center items-center font-sans relative">
       {toastMsg.text && (
         <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-[2000] w-[90%] max-w-[350px] animate-[bounce_0.5s_ease-out]">
-          <div className={`${toastMsg.type === 'error' ? 'bg-red-500' : 'bg-[#FFD400]'} text-[#174A9E] px-5 py-3 rounded-2xl shadow-2xl text-center text-sm font-bold border-2 border-white flex items-center justify-center gap-2`}>
+          <div className={`${toastMsg.type === 'error' ? 'bg-red-500' : 'bg-amber-500'} text-white px-5 py-3 rounded-2xl shadow-2xl text-center text-sm font-bold border-2 border-white flex items-center justify-center gap-2`}>
             {toastMsg.type === 'error' ? <AlertCircle size={18} /> : <CheckCircle size={18} />}
             <span>{toastMsg.text}</span>
           </div>
@@ -1177,48 +1363,63 @@ const playError = () => {
         <div className="hidden sm:block absolute top-0 left-1/2 transform -translate-x-1/2 w-[120px] h-[24px] bg-gray-800 rounded-b-3xl z-[1000]"></div>
 
         {showSplash && (
-        <div className={`absolute inset-0 z-[9999] bg-gradient-to-br from-[#123B7A] via-[#174A9E] to-[#0D2E63] flex flex-col items-center justify-center text-white transition-opacity duration-500 ${fadeSplash ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.5) 1px, transparent 0)',
-              backgroundSize: '24px 24px'
-            }}
-          ></div>
+        <div className={`absolute inset-0 z-[9999] bg-gradient-to-br from-[#5C4033] to-[#8B5E3C] flex flex-col items-center justify-center text-white transition-opacity duration-500 ${fadeSplash ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+```
+<div
+  className="absolute inset-0 opacity-10"
+  style={{
+    backgroundImage:
+      'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.4) 1px, transparent 0)',
+    backgroundSize: '24px 24px'
+  }}
+></div>
 
-          <div className="relative z-10 flex flex-col items-center px-6 text-center">
+<div className="relative z-10 flex flex-col items-center mt-[-40px]">
+  
+  <div className="relative mb-4">
+    <div className="w-28 h-28 bg-white rounded-full flex items-center justify-center shadow-[0_15px_40px_rgba(0,0,0,0.4)] animate-[bounce_2s_infinite] border-4 border-white relative z-10">
+      
+      <div className="relative flex flex-col items-center text-[#B68D40] drop-shadow-md">
+        <Footprints size={56} strokeWidth={2.5} />
+      </div>
 
-  {/* UUM LOGO - NO CIRCLE FRAME */}
-  <div className="relative mb-7">
-    <img
-      src="/uum-logo.png"
-      alt="Universiti Utara Malaysia"
-      className="w-36 h-36 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.35)]"
-    />
+    </div>
+
+    <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-16 h-4 bg-black/30 rounded-full blur-md animate-pulse"></div>
   </div>
 
-            <h1 className="text-[2.35rem] sm:text-[2.6rem] font-black drop-shadow-lg leading-[1.1] text-[#FFD400] tracking-tight">
-              JEJAK DEWAN
-              <br />
-              MUADZAM SHAH
-            </h1>
+  <h1 className="text-[2.6rem] font-black mt-6 drop-shadow-lg text-center leading-[1.1] text-white tracking-tight">
+    JEJAK DIRAJA
+    <br />
+    ALOR SETAR
+  </h1>
 
-            <p className="mt-5 text-white text-base sm:text-lg font-semibold tracking-wide">
-              Universiti Utara Malaysia
-            </p>
-          </div>
+  <div className="mt-4 bg-[#B68D40] text-white uppercase tracking-[0.25em] text-[10px] font-black px-4 py-1.5 rounded-full shadow-lg border-2 border-white">
+    Warisan Kedah
+  </div>
+</div>
 
-        </div>
-      )}
+<div className="absolute bottom-16 w-full flex justify-center z-10 px-4">
+  <p className="text-[#F5E6CC] text-sm font-medium tracking-wide text-center">
+  Explore Kedah Royal Heritage Through AR
+  <span className="block text-xs opacity-80 mt-1">
+    Terokai Warisan Diraja Kedah Melalui AR
+  </span>
+</p>
+</div>
+```
 
-      {showLanguageSelect && (
-  <div className="absolute inset-0 z-[9999] bg-gradient-to-br from-[#123B7A] to-[#174A9E] flex flex-col items-center justify-center text-white">
+  </div>
+)}
+
+{showLanguageSelect && (
+  <div className="absolute inset-0 z-[9999] bg-gradient-to-br from-[#5C4033] to-[#8B5E3C] flex flex-col items-center justify-center text-white">
 
     <h2 className="text-3xl font-black mb-2">
       Choose Language
     </h2>
 
-    <p className="text-blue-100 mb-8">
+    <p className="text-amber-100 mb-8">
       Pilih Bahasa
     </p>
 
@@ -1231,7 +1432,7 @@ const playError = () => {
           setShowLanguageSelect(false);
           setView("howto");
          }}
-        className="bg-white text-[#174A9E] py-4 rounded-2xl font-bold text-lg shadow-xl hover:scale-105 transition"
+        className="bg-white text-[#5C4033] py-4 rounded-2xl font-bold text-lg shadow-xl hover:scale-105 transition"
       >
         English
       </button>
@@ -1243,7 +1444,7 @@ const playError = () => {
         setShowLanguageSelect(false);
         setView("howto");
       }}
-        className="bg-white text-[#174A9E] py-4 rounded-2xl font-bold text-lg shadow-xl hover:scale-105 transition"
+        className="bg-white text-[#5C4033] py-4 rounded-2xl font-bold text-lg shadow-xl hover:scale-105 transition"
       >
         Bahasa Melayu
       </button>
@@ -1256,7 +1457,7 @@ const playError = () => {
         {languageChosen && (
         <div className="flex-grow relative h-full w-full">
           {view === "howto" && (<HowToPlayScreen language={language} onFinish={() => setView("map")}/>)}
-          {view === 'map' && <MapScreen playerLoc={playerLoc} setPlayerLoc={setPlayerLoc} onEnterAR={handleEnterAR} inventory={inventory} isRealGPS={isRealGPS} setIsRealGPS={setIsRealGPS} showNotification={showNotification} language={language} setShowLanguageSelect={setShowLanguageSelect} onOpenHowTo={() => setView('howto')}/>}
+          {view === 'map' && <MapScreen playerLoc={playerLoc} setPlayerLoc={setPlayerLoc} onEnterAR={handleEnterAR} inventory={inventory} isRealGPS={isRealGPS} setIsRealGPS={setIsRealGPS} showNotification={showNotification} language={language} setShowLanguageSelect={setShowLanguageSelect}/>}
           {view === 'ar' && activeMission.artifact && <ARScreen poi={activeMission.poi} artifact={activeMission.artifact} onCatch={handleCatch} onCancel={() => setView('map')} language={language}/>}
           {view === 'info' && activeMission.poi && <InfoScreen poi={activeMission.poi} language={language} onContinue={() => setView('trivia')} />}
           {view === 'trivia' && activeMission.artifact && <TriviaScreen artifact={activeMission.artifact} onSuccess={handleTriviaSuccess} onFail={handleTriviaFail} language={language} />}
@@ -1269,20 +1470,20 @@ const playError = () => {
             <button onClick={() => {
              playClick();
              setView('map');
-             }} className={`flex flex-col items-center justify-center p-2 w-20 transition-all duration-300 ${view === 'map' ? 'text-[#174A9E] -translate-y-2' : 'text-gray-400 hover:text-gray-600'}`}>
-              <div className={`p-2 rounded-2xl ${view === 'map' ? 'bg-[#FFFBE6]' : ''}`}><MapPin size={26} strokeWidth={view === 'map' ? 2.5 : 2} /></div>
+             }} className={`flex flex-col items-center justify-center p-2 w-20 transition-all duration-300 ${view === 'map' ? 'text-amber-600 -translate-y-2' : 'text-gray-400 hover:text-gray-600'}`}>
+              <div className={`p-2 rounded-2xl ${view === 'map' ? 'bg-amber-50' : ''}`}><MapPin size={26} strokeWidth={view === 'map' ? 2.5 : 2} /></div>
               <span className={`text-[10px] mt-1 ${view === 'map' ? 'font-black' : 'font-medium'}`}>
               {t.explore}
               </span>
             </button>
-            <div className="w-14 h-14 bg-gradient-to-tr from-[#FFD400] to-[#FFD400] rounded-full flex items-center justify-center shadow-lg border-4 border-white transform hover:scale-105 transition-transform cursor-pointer">
+            <div className="w-14 h-14 bg-gradient-to-tr from-amber-500 to-amber-400 rounded-full flex items-center justify-center shadow-lg border-4 border-white transform hover:scale-105 transition-transform cursor-pointer">
                <Camera size={24} className="text-white" />
             </div>
             <button onClick={() => {
              playClick();
              setView('inventory');
-             }} className={`flex flex-col items-center justify-center p-2 w-20 transition-all duration-300 relative ${view === 'inventory' ? 'text-[#174A9E] -translate-y-2' : 'text-gray-400 hover:text-gray-600'}`}>
-              <div className={`p-2 rounded-2xl ${view === 'inventory' ? 'bg-[#FFFBE6]' : ''}`}><Backpack size={26} strokeWidth={view === 'inventory' ? 2.5 : 2} /></div>
+             }} className={`flex flex-col items-center justify-center p-2 w-20 transition-all duration-300 relative ${view === 'inventory' ? 'text-amber-600 -translate-y-2' : 'text-gray-400 hover:text-gray-600'}`}>
+              <div className={`p-2 rounded-2xl ${view === 'inventory' ? 'bg-amber-50' : ''}`}><Backpack size={26} strokeWidth={view === 'inventory' ? 2.5 : 2} /></div>
               <span className={`text-[10px] mt-1 ${view === 'inventory' ? 'font-black' : 'font-medium'}`}>
               {t.inventory}
               </span>
