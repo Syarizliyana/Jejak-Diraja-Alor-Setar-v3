@@ -133,7 +133,7 @@ en: 'Padang Court'
 {
 id: 'balai_seni',
 name: 'Balai Seni Negeri Kedah',
-lat: 6.1187,
+lat: 6.1190,
 lng: 100.3655,
 image: '/Balai Seni 3D.png',
 mainIcon: '🎨',
@@ -842,16 +842,6 @@ const MapScreen = ({ playerLoc, setPlayerLoc, onEnterAR, inventory, isRealGPS, s
     const timeoutId = setTimeout(() => fetchRoute(), 800);
     return () => clearTimeout(timeoutId);
   }, [playerLoc.lat, playerLoc.lng, nextMission?.id]);
-
-  useEffect(() => {
-    if (!mapInstanceRef.current) return;
-    if (routeLineRef.current) mapInstanceRef.current.removeLayer(routeLineRef.current);
-    if (routePoints && routePoints.length > 0) {
-      routeLineRef.current = window.L.polyline(routePoints, { 
-        color: '#10b981', dashArray: '12, 12', weight: 6, opacity: 0.9, lineCap: 'round', className: 'animated-route'
-      }).addTo(mapInstanceRef.current);
-    }
-  }, [routePoints]);
 
   // Real GPS Logic
   useEffect(() => {
